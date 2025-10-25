@@ -183,7 +183,7 @@ function App() {
                       lineHeight: 1.7,
                     }}
                   >
-                    📧 jeevanmaher@example.com
+                    📧 jeevanmaherji@gmail.com
                   </Typography>
                   <Typography
                     variant="body2"
