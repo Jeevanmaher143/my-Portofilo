@@ -17,7 +17,7 @@ function App() {
     { icon: <Github size={22} />, url: "https://github.com/Jeevanmaher143", label: "GitHub" },
     { icon: <Linkedin size={22} />, url: "#", label: "LinkedIn" },
     { icon: <Instagram size={22} />, url: "https://www.instagram.com/jeevanmaher_143?igsh=MWdpem4xYjF2cW5jcw==", label: "Instagram" },
-    { icon: <Mail size={22} />, url: "mailto:jeevanmaher@example.com", label: "Email" },
+    { icon: <Mail size={22} />, url: "mailto:jeevanmaherji@gmail.com", label: "Email" },
   ];
 
   const quickLinks = [

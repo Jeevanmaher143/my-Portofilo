@@ -1,5 +1,6 @@
 import React from "react";
-import { Download, Code, Palette } from "lucide-react";
+import { Download, Code } from "lucide-react"; // Palette is no longer needed
+import { Avatar, Box } from "@mui/material"; // <-- Import Avatar and Box
 
 function Hero() {
   return (
@@ -112,6 +113,7 @@ function Hero() {
             }}>
               <a
                 href="/jeevan-resume.pdf"
+                download="jeevan-resume.pdf" // Added this based on our last conversation
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -175,7 +177,7 @@ function Hero() {
             </div>
           </div>
 
-          {/* Right Visual Element */}
+          {/* Right Visual Element - Now with your photo */}
           <div style={{
             flex: window.innerWidth < 768 ? "0 0 auto" : 1,
             display: "flex",
@@ -184,40 +186,56 @@ function Hero() {
             width: window.innerWidth < 768 ? "100%" : "auto",
             marginTop: window.innerWidth < 768 ? "2rem" : 0,
           }}>
-            <div style={{
-              width: window.innerWidth < 640 ? "250px" : window.innerWidth < 1024 ? "300px" : "400px",
-              height: window.innerWidth < 640 ? "250px" : window.innerWidth < 1024 ? "300px" : "400px",
-              borderRadius: "50%",
-              background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-              animation: "float 3s ease-in-out infinite",
-            }}>
-              <style>{`
-                @keyframes float {
-                  0%, 100% { transform: translateY(0px); }
-                  50% { transform: translateY(-20px); }
-                }
-                @keyframes pulse {
-                  0%, 100% { opacity: 0.5; transform: scale(1); }
-                  50% { opacity: 0.8; transform: scale(1.05); }
-                }
-              `}</style>
-              <div style={{
-                position: "absolute",
-                inset: "-20px",
+            <Box // Changed from div to Box for better MUI integration with sx prop
+              sx={{
+                width: { xs: "250px", sm: "300px", lg: "400px" }, // Using MUI breakpoints
+                height: { xs: "250px", sm: "300px", lg: "400px" }, // Using MUI breakpoints
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, rgba(251,191,36,0.2) 0%, rgba(245,158,11,0.2) 100%)",
-                animation: "pulse 2s ease-in-out infinite",
-              }} />
-              <Palette size={100} color="#1f2937" strokeWidth={1.5} />
-            </div>
+                background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+                animation: "float 3s ease-in-out infinite",
+                // The @keyframes are global, so they don't need to be here
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  inset: "-20px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, rgba(251,191,36,0.2) 0%, rgba(245,158,11,0.2) 100%)",
+                  animation: "pulse 2s ease-in-out infinite",
+                }
+              }}
+            >
+              {/* <Palette size={100} color="#1f2937" strokeWidth={1.5} /> */} {/* REMOVED THIS LINE */}
+              <Avatar // <-- ADDED THIS
+                alt="Jeevan Maher"
+                src="/assets/jeevan.jpg" // <-- Your photo path (must be in public/assets)
+                sx={{
+                  width: '90%', // Adjust to fit perfectly within the circle
+                  height: '90%',
+                  objectFit: 'cover', // Ensures the image covers the area without distortion
+                  border: '5px solid white', // Optional: adds a white border
+                  boxShadow: '0 0 15px rgba(0,0,0,0.2)', // Optional: subtle shadow for the avatar itself
+                }}
+              />
+            </Box>
           </div>
         </div>
       </div>
+      {/* Global @keyframes can be moved to src/index.css or a global style file */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+      `}</style>
     </div>
   );
 }
