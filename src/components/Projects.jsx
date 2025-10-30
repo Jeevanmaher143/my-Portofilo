@@ -10,7 +10,7 @@ import {
   Box,
   Chip,
 } from "@mui/material";
-import { Github, ExternalLink, Cloud, Users, Heart } from "lucide-react";
+import { Github, Cloud, Users, Heart } from "lucide-react";
 
 const projects = [
   {
@@ -21,7 +21,6 @@ const projects = [
     color: "#3B82F6",
     tags: ["React", "Material UI", "API", "Responsive"],
     githubUrl: "https://github.com/Jeevanmaher143/weather-app",
-    liveUrl: "#",
   },
   {
     title: "Unity Share - Community Resource Sharing Platform",
@@ -29,9 +28,8 @@ const projects = [
       "Developed a web-based platform that allows users to share, borrow, or donate resources within their community. The system helps people connect and make better use of available resources through an easy-to-use interface. Users can post available items, search for needed ones, and manage their listings through a personal dashboard.",
     icon: <Users size={48} />,
     color: "#10B981",
-    tags: ["MERN Stack", "MongoDB", "Community", "Dashboard"],
-    githubUrl: "#",
-    liveUrl: "#",
+    tags: ["MERN Stack", "MongoDB", "Dashboard","Basic Needs"],
+    githubUrl: "https://github.com/Jeevanmaher143",
   },
   {
     title: "ResQHome – Pet Adoption Platform",
@@ -39,20 +37,18 @@ const projects = [
       "Created a comprehensive pet adoption platform connecting animal shelters with potential adopters. Features include pet profiles with detailed information, advanced search filters, adoption application system, and user authentication. Built with focus on user experience and responsive design to help pets find their forever homes.",
     icon: <Heart size={48} />,
     color: "#EC4899",
-    tags: ["React", "Node.js", "Express", "Authentication"],
-    githubUrl: "#",
-    liveUrl: "#",
+    tags: ["React.js", "Node.js", "Express","Admin", "Authentication"],
+    githubUrl: "https://github.com/Jeevanmaher143",
   },
 ];
 
 function Projects() {
   return (
-    <Box 
-      id="projects" 
-      sx={{ 
+    <Box
+      id="projects"
+      sx={{
         py: { xs: 6, md: 10 },
         background: "linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%)",
-        position: "relative",
       }}
     >
       <Container maxWidth="lg">
@@ -76,11 +72,10 @@ function Projects() {
             sx={{
               fontWeight: 800,
               mb: 2,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+              fontSize: { xs: "2rem", md: "3rem" },
               background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
             }}
           >
             My Projects
@@ -94,14 +89,15 @@ function Projects() {
               fontSize: { xs: "1rem", md: "1.1rem" },
             }}
           >
-            Here are some of my recent projects that showcase my skills and creativity
+            Here are some of my recent projects that showcase my skills and
+            creativity
           </Typography>
         </Box>
 
         {/* Projects Grid */}
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justifyContent="center">
           {projects.map((project, index) => (
-            <Grid item key={index} xs={12} md={6} lg={4}>
+            <Grid item key={index} xs={12} sm={6}>
               <Card
                 elevation={0}
                 sx={{
@@ -111,7 +107,6 @@ function Projects() {
                   borderRadius: "20px",
                   border: "2px solid #e9ecef",
                   transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                  position: "relative",
                   overflow: "hidden",
                   "&::before": {
                     content: '""',
@@ -164,7 +159,7 @@ function Projects() {
                       fontWeight: 700,
                       mb: 2,
                       color: "#212529",
-                      fontSize: { xs: "1.25rem", md: "1.5rem" },
+                      fontSize: { xs: "1.25rem", md: "1.4rem" },
                     }}
                   >
                     {project.title}
@@ -183,7 +178,7 @@ function Projects() {
                   </Typography>
 
                   {/* Tags */}
-                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 2 }}>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: "auto", pt: 2 }}>
                     {project.tags.map((tag, idx) => (
                       <Chip
                         key={idx}
@@ -201,18 +196,20 @@ function Projects() {
                   </Box>
                 </CardContent>
 
-                <CardActions sx={{ p: 3, pt: 0, gap: 1 }}>
+                <CardActions sx={{ p: 3, pt: 0 }}>
                   <Button
                     size="medium"
                     href={project.githubUrl}
                     target="_blank"
                     startIcon={<Github size={18} />}
+                    disabled={project.githubUrl === "#"}
                     sx={{
                       color: "#212529",
                       fontWeight: 600,
                       textTransform: "none",
                       borderRadius: "10px",
                       px: 2,
+                      py: 1,
                       border: "2px solid #e9ecef",
                       transition: "all 0.3s ease",
                       "&:hover": {
@@ -220,11 +217,14 @@ function Projects() {
                         color: project.color,
                         backgroundColor: `${project.color}10`,
                       },
+                      "&.Mui-disabled": {
+                        borderColor: "#e0e0e0",
+                        color: "#a0a0a0",
+                      },
                     }}
                   >
                     GitHub
                   </Button>
-                  
                 </CardActions>
               </Card>
             </Grid>
