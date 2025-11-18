@@ -92,7 +92,7 @@ function Hero() {
               margin: "0 0 1rem 0",
               fontSize: window.innerWidth < 480 ? "1.25rem" : window.innerWidth < 768 ? "1.5rem" : "2rem",
             }}>
-              Frontend Developer
+              Software Tester
             </h2>
 
             <p style={{
@@ -103,10 +103,8 @@ function Hero() {
               maxWidth: window.innerWidth < 768 ? "100%" : "600px",
               margin: window.innerWidth < 640 ? "0 auto 1.5rem" : "0 0 2rem 0",
             }}>
-              A passionate frontend developer specializing in React and building
-              responsive, user-friendly web applications. I love transforming ideas
-              into clean, interactive interfaces with a focus on UI/UX design that
-              ensures seamless user experiences.
+              Passionate QA Tester dedicated to delivering high-quality, bug-free web applications. Transitioning from a role as a Frontend Developer, I bring deep technical knowledge of React and responsive design principles to the testing process. My expertise in UI/UX ensures that I advocate for the end-user, verifying not just functionality, but also usability and accessibility.
+               Proficient in Manual Testing, test case execution, and defect tracking.
             </p>
 
             <div style={{
