@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import { Code, Database, Layers, Palette, Terminal, GitBranch, FileCode, Briefcase, Server, MessageSquare, Lightbulb, Users, Brain, Clock, Heart } from 'lucide-react';
 
 const technicalSkills = [
+    { icon: Code, name: "HTML & CSS", color: "#E34F26" },
+  { icon: Code, name: "JavaScript", color: "#F7DF1E" },
+
+  { icon: Code, name: "MongoDB", color: "#47A248" },
+{ icon: Code, name: "Express.js", color: "#000000" },
+{ icon: Code, name: "React.js", color: "#61DAFB" },
+{ icon: Code, name: "Node.js", color: "#339933" },
    { icon: Code, name: "QA", color: "#E34F26" },
     { icon: Code, name: "Manual Testing", color: "#E34F26" },
         { icon: Database, name: "SQL", color: "#4479A1" },
-  { icon: Database, name: "MongoDB", color: "#47A248" },
   { icon: Code, name: "JIRA", color: "#E34F26" },
   { icon: Briefcase, name: "MS-Office", color: "#D83B01" },
     { icon: Briefcase, name: "Excel", color: "#D83B01" },
   { icon: Layers, name: "Postman API ", color: "#61DAFB" },
   { icon: FileCode, name: "Java", color: "#007396" },
-  { icon: Code, name: "HTML & CSS", color: "#E34F26" },
-  { icon: Code, name: "JavaScript", color: "#F7DF1E" },
-  { icon: Layers, name: "React.js", color: "#61DAFB" },
 
   { icon: Terminal, name: "DSA", color: "#FF6B6B" },
   { icon: Palette, name: "UI/UX Design", color: "#FF6F61" },

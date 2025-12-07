@@ -92,7 +92,7 @@ function Hero() {
               margin: "0 0 1rem 0",
               fontSize: window.innerWidth < 480 ? "1.25rem" : window.innerWidth < 768 ? "1.5rem" : "2rem",
             }}>
-              Software Tester
+              Full Stack Developer / QA Tester
             </h2>
 
             <p style={{
@@ -103,8 +103,7 @@ function Hero() {
               maxWidth: window.innerWidth < 768 ? "100%" : "600px",
               margin: window.innerWidth < 640 ? "0 auto 1.5rem" : "0 0 2rem 0",
             }}>
-              Passionate QA Tester dedicated to delivering high-quality, bug-free web applications. Transitioning from a role as a Frontend Developer, I bring deep technical knowledge of React and responsive design principles to the testing process. My expertise in UI/UX ensures that I advocate for the end-user, verifying not just functionality, but also usability and accessibility.
-               Proficient in Manual Testing, test case execution, and defect tracking.
+              Passionate Full-Stack Developer and QA Tester dedicated to delivering high-quality, bug-free web applications. With experience transitioning from frontend to full-stack development, I bring strong technical knowledge of React, Node.js, and responsive design principles into the testing process. My UI/UX understanding helps me advocate for the end user, ensuring not only correct functionality but also usability and accessibility. Skilled in Manual Testing, test case design and execution, and defect tracking, I work to ensure every feature meets quality standards
             </p>
 
             <div style={{
