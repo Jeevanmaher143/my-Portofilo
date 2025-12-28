@@ -1,42 +1,658 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ========================================
+   FOOTER SECTION - ADVANCED ANIMATIONS
+   ======================================== */
+
+.footer-section {
+  position: relative;
+  overflow: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ========== ANIMATED BACKGROUND ELEMENTS ========== */
+
+/* Gradient Orbs */
+.footer-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.15;
+  z-index: 0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-@keyframes logo-spin {
+.footer-bg-orb.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.4) 0%, transparent 70%);
+  top: -20%;
+  right: -10%;
+  animation: floatOrbFooter 28s;
+}
+
+.footer-bg-orb.orb-2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+  bottom: -20%;
+  left: -10%;
+  animation: floatOrbFooter 25s reverse;
+}
+
+/* Animated Grid Pattern */
+.footer-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(251, 191, 36, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMoveFooter 30s linear infinite;
+  z-index: 0;
+}
+
+/* Top Gradient Line */
+.footer-top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #fbbf24 0%, #3b82f6 50%, #10b981 100%);
+  background-size: 200% auto;
+  animation: gradientSlideFooter 4s linear infinite;
+  z-index: 1;
+}
+
+/* ========== FOOTER COLUMNS ENTRANCE ANIMATIONS ========== */
+
+.footer-col {
+  animation: fadeInUpFooter 0.8s ease forwards;
+  opacity: 0;
+}
+
+.footer-col-1 {
+  animation-delay: 0.1s;
+}
+
+.footer-col-2 {
+  animation-delay: 0.2s;
+}
+
+.footer-col-3 {
+  animation-delay: 0.3s;
+}
+
+/* ========== BRAND ANIMATION ========== */
+
+.footer-brand {
+  animation: gradientShiftFooter 3s ease infinite;
+  display: inline-block;
+  position: relative;
+}
+
+.footer-brand::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  animation: expandLineFooter 1s ease 0.5s forwards;
+}
+
+.footer-description {
+  animation: fadeInUpFooter 0.8s ease 0.4s backwards;
+}
+
+/* ========== SOCIAL BUTTONS ANIMATIONS ========== */
+
+.footer-social-container {
+  animation: fadeInUpFooter 0.8s ease 0.6s backwards;
+}
+
+.footer-social-btn {
+  position: relative;
+  overflow: hidden;
+  animation: popInFooter 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  opacity: 0;
+}
+
+.footer-social-0 {
+  animation-delay: 0.7s;
+}
+
+.footer-social-1 {
+  animation-delay: 0.8s;
+}
+
+.footer-social-2 {
+  animation-delay: 0.9s;
+}
+
+.footer-social-3 {
+  animation-delay: 1s;
+}
+
+.footer-social-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(251, 191, 36, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.footer-social-btn:hover::before {
+  width: 150px;
+  height: 150px;
+}
+
+/* ========== COLUMN TITLES ========== */
+
+.footer-col-title {
+  position: relative;
+  animation: fadeInUpFooter 0.8s ease backwards;
+}
+
+.footer-col-2 .footer-col-title {
+  animation-delay: 0.3s;
+}
+
+.footer-col-3 .footer-col-title {
+  animation-delay: 0.4s;
+}
+
+.footer-col-title::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #fbbf24;
+  animation: expandLineFooter 0.6s ease 0.5s backwards;
+}
+
+/* ========== QUICK LINKS ANIMATIONS ========== */
+
+.footer-links-container {
+  animation: fadeInUpFooter 0.8s ease 0.5s backwards;
+}
+
+.footer-link {
+  position: relative;
+  animation: slideInLeftFooter 0.5s ease forwards;
+  opacity: 0;
+}
+
+.footer-link-0 {
+  animation-delay: 0.6s;
+}
+
+.footer-link-1 {
+  animation-delay: 0.7s;
+}
+
+.footer-link-2 {
+  animation-delay: 0.8s;
+}
+
+.footer-link-3 {
+  animation-delay: 0.9s;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #fbbf24;
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* ========== CONTACT ITEMS ANIMATIONS ========== */
+
+.footer-contact-container {
+  animation: fadeInUpFooter 0.8s ease 0.5s backwards;
+}
+
+.footer-contact-item {
+  animation: slideInRightFooter 0.5s ease forwards;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-contact-0 {
+  animation-delay: 0.6s;
+}
+
+.footer-contact-1 {
+  animation-delay: 0.7s;
+}
+
+.footer-contact-2 {
+  animation-delay: 0.8s;
+}
+
+.footer-contact-item:hover {
+  transform: translateX(8px);
+  color: #fbbf24 !important;
+}
+
+.footer-contact-icon {
+  display: inline-flex;
+  font-size: 1.2rem;
+  animation: bounceFooter 2s ease-in-out infinite;
+  animation-delay: inherit;
+}
+
+/* ========== DIVIDER ANIMATION ========== */
+
+.footer-divider {
+  animation: expandWidthFooter 1s ease 1s backwards;
+  transform-origin: left;
+}
+
+/* ========== BOTTOM FOOTER ANIMATIONS ========== */
+
+.footer-bottom {
+  animation: fadeInUpFooter 0.8s ease 1.2s backwards;
+}
+
+.footer-copyright {
+  animation: fadeInFooter 0.8s ease 1.3s backwards;
+}
+
+.footer-heart {
+  animation: heartBeatFooter 1.5s ease-in-out infinite;
+}
+
+/* ========== SCROLL TO TOP BUTTON ========== */
+
+.footer-scroll-top {
+  animation: popInFooter 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.4s backwards;
+  position: relative;
+}
+
+.footer-scroll-top::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #fbbf24;
+  opacity: 0;
+  animation: pingFooter 2s ease-in-out infinite 2s;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+/* Background Animations */
+@keyframes floatOrbFooter {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(40px, -50px);
+  }
+  66% {
+    transform: translate(-30px, 40px);
+  }
+}
+
+@keyframes gridMoveFooter {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes gradientSlideFooter {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Entrance Animations */
+@keyframes fadeInUpFooter {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes fadeInFooter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-.card {
-  padding: 2em;
+@keyframes slideInLeftFooter {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes slideInRightFooter {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popInFooter {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Text Animations */
+@keyframes gradientShiftFooter {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes expandLineFooter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 40px;
+  }
+}
+
+@keyframes expandWidthFooter {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Icon Animations */
+@keyframes bounceFooter {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes heartBeatFooter {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.1);
+  }
+  20%, 40% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes pingFooter {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50%, 100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   HOVER EFFECTS
+   ======================================== */
+
+/* Add shimmer effect on hover for brand */
+.footer-brand:hover {
+  animation: shimmerFooter 1s ease-in-out;
+}
+
+@keyframes shimmerFooter {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 960px) {
+  .footer-bg-orb {
+    filter: blur(80px);
+  }
+
+  .footer-bg-orb.orb-1,
+  .footer-bg-orb.orb-2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .footer-grid-pattern {
+    background-size: 30px 30px;
+  }
+
+  .footer-col {
+    animation-delay: 0s !important;
+  }
+
+  .footer-social-btn,
+  .footer-link,
+  .footer-contact-item {
+    animation-delay: 0s !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .footer-section {
+    padding: 0;
+  }
+
+  .footer-bg-orb {
+    width: 250px !important;
+    height: 250px !important;
+    filter: blur(60px);
+    opacity: 0.1;
+  }
+
+  .footer-grid-pattern {
+    background-size: 20px 20px;
+  }
+
+  .footer-top-line {
+    height: 3px;
+  }
+
+  .footer-brand {
+    font-size: 1.5rem !important;
+  }
+
+  .footer-col-title {
+    font-size: 1.1rem !important;
+  }
+
+  .footer-description {
+    font-size: 0.85rem !important;
+  }
+
+  .footer-link,
+  .footer-contact-item {
+    font-size: 0.85rem !important;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem !important;
+    text-align: center;
+  }
+
+  .footer-social-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-bottom {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* Simplify animations on mobile */
+  .footer-col,
+  .footer-social-btn,
+  .footer-link,
+  .footer-contact-item {
+    animation: fadeInFooter 0.5s ease forwards !important;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 400px) {
+  .footer-brand {
+    font-size: 1.3rem !important;
+  }
+
+  .footer-social-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .footer-bg-orb,
+  .footer-grid-pattern,
+  .footer-top-line,
+  .footer-heart,
+  .footer-contact-icon {
+    animation: none !important;
+  }
+}
+
+/* Focus Visible */
+.footer-social-btn:focus-visible,
+.footer-link:focus-visible,
+.footer-scroll-top:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 4px;
+}
+
+/* High Contrast */
+@media (prefers-contrast: high) {
+  .footer-social-btn,
+  .footer-scroll-top {
+    border-width: 2px !important;
+  }
+
+  .footer-top-line {
+    height: 5px;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* GPU Acceleration */
+.footer-social-btn,
+.footer-link,
+.footer-scroll-top,
+.footer-brand {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.footer-bg-orb,
+.footer-grid-pattern {
+  will-change: transform, opacity;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .footer-bg-orb,
+  .footer-grid-pattern,
+  .footer-top-line,
+  .footer-scroll-top {
+    display: none !important;
+  }
+
+  .footer-section {
+    background: #1a1a2e !important;
+    page-break-before: always;
+  }
+
+  .footer-link,
+  .footer-social-btn {
+    border: 1px solid #666 !important;
+  }
 }

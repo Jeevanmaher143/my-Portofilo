@@ -1,0 +1,636 @@
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+  display: flex;
+  align-items: center;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ========== ANIMATED BACKGROUND ORBS ========== */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.3;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(251,191,36,0.4) 0%, transparent 70%);
+  top: -20%;
+  right: -10%;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%);
+  bottom: -15%;
+  left: -5%;
+  animation: floatOrbReverse 18s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(168,85,247,0.3) 0%, transparent 70%);
+  top: 30%;
+  left: 15%;
+  animation: floatOrb 15s ease-in-out infinite 2s;
+}
+
+/* ========== FLOATING GEOMETRIC SHAPES ========== */
+.float-shape {
+  position: absolute;
+  border: 2px solid rgba(251,191,36,0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape-1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  border-color: rgba(251,191,36,0.4);
+  top: 15%;
+  right: 10%;
+  transform: rotate(45deg);
+  animation: rotateFloat 10s linear infinite;
+}
+
+.shape-2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border-color: rgba(59,130,246,0.4);
+  bottom: 20%;
+  left: 15%;
+  animation: pulseScale 3s ease-in-out infinite;
+}
+
+.shape-3 {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(168,85,247,0.4);
+  top: 50%;
+  right: 25%;
+  transform: rotate(30deg);
+  animation: rotateFloat 8s linear infinite reverse;
+}
+
+/* ========== HERO CONTAINER ========== */
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== CONTENT ========== */
+.hero-content {
+  flex: 1;
+  color: #fff;
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-tag {
+  color: #fbbf24;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: inline-block;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin: 0.5rem 0;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-title span {
+  background: linear-gradient(135deg, #fff 0%, #fbbf24 50%, #3b82f6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+}
+
+.hero-subtitle {
+  color: #fbbf24;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 30px rgba(251,191,36,0.4);
+  animation: fadeUp 1s ease 0.3s backwards;
+}
+
+.hero-desc {
+  color: #cbd5e1;
+  line-height: 1.8;
+  max-width: 600px;
+  font-size: 1.1rem;
+  animation: fadeUp 1s ease 0.5s backwards;
+}
+
+/* ========== BUTTONS ========== */
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1s ease 0.7s backwards;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #0f172a;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4), 0 0 60px rgba(251,191,36,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5), 0 0 80px rgba(251,191,36,0.3);
+}
+
+.btn-outline {
+  border: 2px solid #fbbf24;
+  color: #fbbf24;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(251, 191, 36, 0.05);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(251,191,36,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-outline:hover::after {
+  left: 100%;
+}
+
+.btn-outline:hover {
+  background: rgba(251, 191, 36, 0.15);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+}
+
+/* ========== IMAGE SECTION WITH ADVANCED ANIMATIONS ========== */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  animation: fadeScale 1.2s ease 0.9s backwards;
+}
+
+.image-wrapper {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== MULTIPLE ROTATING RINGS ========== */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.ring-1 {
+  inset: -35px;
+  border-top-color: #fbbf24;
+  border-right-color: #f59e0b;
+  animation: rotateRing 8s;
+  filter: drop-shadow(0 0 15px rgba(251,191,36,0.6));
+}
+
+.ring-2 {
+  inset: -25px;
+  border-bottom-color: #3b82f6;
+  border-left-color: #60a5fa;
+  animation: rotateRing 6s reverse;
+  filter: drop-shadow(0 0 15px rgba(59,130,246,0.6));
+}
+
+.ring-3 {
+  inset: -45px;
+  border-top-color: #a855f7;
+  border-bottom-color: #c084fc;
+  border-width: 2px;
+  animation: rotateRing 10s;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 15px rgba(168,85,247,0.5));
+}
+
+/* ========== PULSING GLOW EFFECT ========== */
+.glow-pulse {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(251,191,36,0.3) 0%, rgba(59,130,246,0.3) 100%);
+  animation: pulseGlow 3s ease-in-out infinite;
+  filter: blur(25px);
+  z-index: -1;
+}
+
+/* ========== MAIN IMAGE CONTAINER ========== */
+.image-ring {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #3b82f6 100%);
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 
+    0 20px 60px rgba(251,191,36,0.4), 
+    0 0 100px rgba(59,130,246,0.2),
+    inset 0 0 50px rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.image-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #1e293b;
+  display: block;
+  border: 3px solid #0f172a;
+}
+
+/* ========== FLOATING PARTICLES ========== */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 30px currentColor;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  z-index: 10;
+}
+
+.particle-1 {
+  width: 14px;
+  height: 14px;
+  background: #fbbf24;
+  color: #fbbf24;
+  top: 8%;
+  right: 2%;
+  animation: particleFloat 3s, particlePulse 1.5s infinite;
+}
+
+.particle-2 {
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  color: #3b82f6;
+  bottom: 12%;
+  left: 5%;
+  animation: particleFloat 4s 1s, particlePulse 2s infinite;
+}
+
+.particle-3 {
+  width: 10px;
+  height: 10px;
+  background: #a855f7;
+  color: #a855f7;
+  top: 25%;
+  left: -5%;
+  animation: particleFloat 3.5s 0.5s, particlePulse 1.8s infinite;
+}
+
+.particle-4 {
+  width: 8px;
+  height: 8px;
+  background: #f59e0b;
+  color: #f59e0b;
+  bottom: 30%;
+  right: -3%;
+  animation: particleFloat 4.5s 1.5s, particlePulse 2.2s infinite;
+}
+
+.particle-5 {
+  width: 11px;
+  height: 11px;
+  background: #60a5fa;
+  color: #60a5fa;
+  top: 45%;
+  right: 8%;
+  animation: particleFloat 3.8s 0.8s, particlePulse 1.6s infinite;
+}
+
+.particle-6 {
+  width: 9px;
+  height: 9px;
+  background: #c084fc;
+  color: #c084fc;
+  bottom: 45%;
+  left: 8%;
+  animation: particleFloat 4.2s 1.2s, particlePulse 1.9s infinite;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Background Orb Animations */
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(30px, -30px); }
+  66% { transform: translate(-20px, 20px); }
+}
+
+@keyframes floatOrbReverse {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-30px, 30px); }
+  66% { transform: translate(20px, -20px); }
+}
+
+/* Shape Animations */
+@keyframes rotateFloat {
+  0% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(225deg) translateY(-15px); }
+  100% { transform: rotate(405deg) translateY(0); }
+}
+
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Content Animations */
+@keyframes fadeUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(40px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeScale {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    text-shadow: 0 0 20px rgba(251,191,36,0.5);
+  }
+  50% { 
+    text-shadow: 0 0 30px rgba(251,191,36,0.8), 0 0 40px rgba(251,191,36,0.5);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Image Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.08); 
+  }
+}
+
+/* Particle Animations */
+@keyframes particleFloat {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px); 
+  }
+  25% { 
+    transform: translateY(-30px) translateX(10px); 
+  }
+  50% { 
+    transform: translateY(-20px) translateX(-10px); 
+  }
+  75% { 
+    transform: translateY(-35px) translateX(5px); 
+  }
+}
+
+@keyframes particlePulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.3); 
+    opacity: 0.6; 
+  }
+}
+
+/* ========================================
+   📱 MOBILE RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-tag {
+    font-size: 0.75rem;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .btn-primary, .btn-outline {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.9rem;
+  }
+
+  /* Image adjustments for mobile */
+  .image-wrapper {
+    width: 260px;
+    height: 260px;
+  }
+
+  .image-ring {
+    width: 220px;
+    height: 220px;
+  }
+
+  .orbit-ring {
+    border-width: 2px;
+  }
+
+  .ring-1 {
+    inset: -25px;
+  }
+
+  .ring-2 {
+    inset: -18px;
+  }
+
+  .ring-3 {
+    inset: -32px;
+  }
+
+  .particle {
+    transform: scale(0.8);
+  }
+
+  /* Reduce background effects on mobile */
+  .bg-orb {
+    filter: blur(60px);
+  }
+
+  .orb-1 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orb-2 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .orb-3 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .float-shape {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .image-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  .image-ring {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ring-1 {
+    inset: -20px;
+  }
+
+  .ring-2 {
+    inset: -15px;
+  }
+
+  .ring-3 {
+    inset: -25px;
+  }
+}

@@ -1,0 +1,549 @@
+/* ========================================
+   ABOUT SECTION - ADVANCED ANIMATIONS
+   ======================================== */
+
+.about-section {
+  position: relative;
+}
+
+/* ========== ANIMATED BACKGROUND ELEMENTS ========== */
+.about-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.15;
+  z-index: 0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.about-bg-orb.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(251, 191, 36, 0.4) 0%,
+    transparent 70%
+  );
+  top: 5%;
+  right: -15%;
+  animation: floatOrbGentle 28s;
+}
+
+.about-bg-orb.orb-2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.4) 0%,
+    transparent 70%
+  );
+  bottom: 10%;
+  left: -15%;
+  animation: floatOrbGentle 25s reverse;
+}
+
+/* ========== FLOATING GEOMETRIC SHAPES ========== */
+.about-bg-shape {
+  position: absolute;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-bg-shape.shape-1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  top: 15%;
+  right: 12%;
+  border-color: rgba(251, 191, 36, 0.3);
+  transform: rotate(45deg);
+  animation: rotateFloatGentle 18s linear infinite;
+}
+
+.about-bg-shape.shape-2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  bottom: 20%;
+  left: 10%;
+  border-color: rgba(16, 185, 129, 0.3);
+  animation: pulseScaleGentle 5s ease-in-out infinite;
+}
+
+.about-bg-shape.shape-3 {
+  width: 60px;
+  height: 60px;
+  top: 45%;
+  right: 8%;
+  border-color: rgba(236, 72, 153, 0.3);
+  transform: rotate(30deg);
+  animation: rotateFloatGentle 14s linear infinite reverse;
+}
+
+/* ========== HEADER ANIMATIONS ========== */
+.about-header {
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+.about-tag {
+  animation: glowPulseSubtle 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+.about-title {
+  animation: gradientShiftSlow 5s ease infinite;
+}
+
+.section-subtitle {
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+  position: relative;
+  display: inline-block;
+}
+
+.section-subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #fbbf24, #3b82f6);
+  border-radius: 10px;
+  animation: expandLine 0.8s ease 0.4s backwards;
+}
+
+/* ========== HIGHLIGHT CARDS ANIMATIONS ========== */
+.highlight-grid-item {
+  animation: fadeInScale 0.6s ease forwards;
+  opacity: 0;
+}
+
+.highlight-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Breathing/Living Animation */
+.highlight-card {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* ========== EDUCATION CARDS ANIMATIONS ========== */
+.education-grid-item {
+  animation: fadeInScale 0.7s ease forwards;
+  opacity: 0;
+}
+
+.education-card {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Floating Animation for Education Cards */
+.education-card {
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Stagger delays for education cards */
+.education-grid-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.education-grid-item:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.education-grid-item:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+/* Background Animations */
+@keyframes floatOrbGentle {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(50px, -50px);
+  }
+  66% {
+    transform: translate(-40px, 40px);
+  }
+}
+
+@keyframes rotateFloatGentle {
+  0% {
+    transform: rotate(45deg) translateY(0);
+  }
+  50% {
+    transform: rotate(225deg) translateY(-20px);
+  }
+  100% {
+    transform: rotate(405deg) translateY(0);
+  }
+}
+
+@keyframes pulseScaleGentle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+}
+
+/* Header Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulseSubtle {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(251, 191, 36, 0.8),
+                 0 0 35px rgba(251, 191, 36, 0.5);
+  }
+}
+
+@keyframes gradientShiftSlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
+}
+
+/* Card Entrance Animations */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Icon Animations */
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Pulse Ring Effect */
+@keyframes pulseRing {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE OPTIMIZED
+   ======================================== */
+
+/* Tablet View */
+@media (max-width: 960px) {
+  .about-bg-orb {
+    filter: blur(70px);
+  }
+
+  .about-bg-orb.orb-1,
+  .about-bg-orb.orb-2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .about-bg-shape {
+    transform: scale(0.8);
+  }
+
+  .section-subtitle::after {
+    width: 50px;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+  .about-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .about-bg-orb {
+    width: 250px !important;
+    height: 250px !important;
+    filter: blur(50px);
+    opacity: 0.1;
+  }
+
+  .about-bg-orb.orb-1 {
+    top: 0;
+    right: -20%;
+  }
+
+  .about-bg-orb.orb-2 {
+    bottom: 0;
+    left: -20%;
+  }
+
+  .about-bg-shape {
+    display: none;
+  }
+
+  .about-header {
+    margin-bottom: 2rem !important;
+  }
+
+  .about-tag {
+    font-size: 0.75rem !important;
+  }
+
+  .about-title {
+    font-size: 1.75rem !important;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem !important;
+  }
+
+  .section-subtitle::after {
+    width: 40px;
+    bottom: -6px;
+  }
+
+  .highlight-card,
+  .education-card {
+    max-width: 100% !important;
+  }
+
+  /* Reduce animation intensity on mobile */
+  .highlight-card:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+  }
+
+  .education-card:hover {
+    transform: translateY(-6px) scale(1.02) !important;
+  }
+
+  /* Disable breathing animation on mobile for performance */
+  .highlight-card {
+    animation: none;
+  }
+
+  .education-card {
+    animation: floatCardMobile 6s ease-in-out infinite;
+  }
+
+  @keyframes floatCardMobile {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 400px) {
+  .about-title {
+    font-size: 1.5rem !important;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .highlight-card,
+  .education-card {
+    padding: 1.5rem !important;
+  }
+
+  .highlight-icon svg,
+  .edu-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .about-bg-orb,
+  .about-bg-shape {
+    animation: none !important;
+  }
+
+  .highlight-card,
+  .education-card {
+    animation: none !important;
+  }
+}
+
+/* Focus Visible Styles */
+.highlight-card:focus-visible,
+.education-card:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 4px;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .about-bg-orb,
+  .about-bg-shape,
+  .highlight-dot,
+  .edu-pulse {
+    display: none !important;
+  }
+
+  .highlight-card,
+  .education-card {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .about-section {
+    background: #0f172a !important;
+  }
+}
+
+/* ========================================
+   DARK MODE SUPPORT (if needed)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  /* Add dark mode styles here if needed */
+  /* Currently the section has light theme by default */
+}
+
+/* ========================================
+   HIGH CONTRAST MODE
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .highlight-card,
+  .education-card {
+    border-width: 3px !important;
+  }
+
+  .about-tag,
+  .about-title {
+    text-shadow: none !important;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* GPU Acceleration for smooth animations */
+.highlight-card,
+.education-card,
+.highlight-icon,
+.edu-icon {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize background elements */
+.about-bg-orb,
+.about-bg-shape {
+  will-change: transform, opacity;
+}
