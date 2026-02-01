@@ -20,9 +20,9 @@ const projects = [
       "Developed a full-stack Gram Panchayat Management Website to digitize village administration. The platform provides online access to notices, government schemes, village services, development projects, and a photo gallery. It includes an admin dashboard to manage content securely and improves communication between the Panchayat and villagers. Built using the MERN stack with a responsive and user-friendly design.",
     icon: <Building2 size={48} />,
     color: "#8B5CF6",
-    tags: ["MERN Stack", "Admin Dashboard", "MongoDB", "Government"],
+    tags: ["MERN Stack", "Admin Dashboard", "Render& Vercel ", "Domain.in","CLoudnary"],
     githubUrl: "https://github.com/Jeevanmaher143",
-    liveUrl: "https://frontend-hazel-theta-46.vercel.app/",
+    liveUrl: "https://www.gproshankheda.in/",
   },
   {
     title: "Weather App",
