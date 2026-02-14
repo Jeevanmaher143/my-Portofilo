@@ -56,32 +56,34 @@ function Header() {
         background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
         color: 'white',
         position: 'relative',
-        overflow: 'hidden',
       }}
       role="presentation"
     >
-      {/* Drawer Background Effects */}
-      <div className="drawer-bg-orb orb-1"></div>
-      <div className="drawer-bg-orb orb-2"></div>
-      <div className="drawer-grid-pattern"></div>
+      {/* Simple gradient overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: '150px',
+          height: '150px',
+          background: 'radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
 
       <Box sx={{ 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center',
         p: 2.5,
-        borderBottom: '2px solid rgba(251, 191, 36, 0.2)',
-        position: 'relative',
-        zIndex: 1,
+        borderBottom: '1px solid rgba(251, 191, 36, 0.2)',
       }}
       className="drawer-header"
       >
         <Typography variant="h6" sx={{ 
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+          fontWeight: 700,
+          color: '#fbbf24',
         }}>
           Menu
         </Typography>
@@ -90,20 +92,16 @@ function Header() {
           className="drawer-close-btn"
           sx={{ 
             color: '#fbbf24',
-            backgroundColor: 'rgba(251, 191, 36, 0.1)',
-            border: '2px solid rgba(251, 191, 36, 0.3)',
             '&:hover': {
-              backgroundColor: 'rgba(251, 191, 36, 0.2)',
-              transform: 'rotate(90deg)',
+              backgroundColor: 'rgba(251, 191, 36, 0.1)',
             },
-            transition: 'all 0.3s ease',
           }}
         >
           <CloseIcon />
         </IconButton>
       </Box>
 
-      <List sx={{ p: 2, position: 'relative', zIndex: 1 }}>
+      <List sx={{ p: 2 }}>
         {navItems.map((item, index) => (
           <ListItem 
             key={item.label} 
@@ -115,43 +113,36 @@ function Header() {
               onClick={handleDrawerToggle}
               className="drawer-nav-link"
               sx={{
-                py: 2,
-                px: 2.5,
+                py: 1.5,
+                px: 2,
                 mb: 1,
-                borderRadius: '12px',
-                border: '2px solid rgba(251, 191, 36, 0.2)',
-                background: 'rgba(30, 41, 59, 0.6)',
-                backdropFilter: 'blur(10px)',
+                borderRadius: '8px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'rgba(30, 41, 59, 0.5)',
                 transition: 'all 0.3s ease',
                 '&:hover': {
                   backgroundColor: 'rgba(251, 191, 36, 0.1)',
                   borderColor: '#fbbf24',
                   transform: 'translateX(8px)',
-                  boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
                 },
               }}
             >
               <ListItemText 
                 primary={item.label}
                 primaryTypographyProps={{
-                  fontSize: '1.1rem',
+                  fontSize: '1rem',
                   fontWeight: 600,
                   color: '#f1f5f9',
                 }}
               />
               <Box
-                className="drawer-link-arrow"
                 sx={{
-                  width: '24px',
-                  height: '24px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(251, 191, 36, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   color: '#fbbf24',
-                  fontSize: '1rem',
-                  transition: 'all 0.3s ease',
+                  fontSize: '1.2rem',
+                  transition: 'transform 0.3s ease',
+                  '.drawer-nav-link:hover &': {
+                    transform: 'translateX(4px)',
+                  },
                 }}
               >
                 →
@@ -170,9 +161,8 @@ function Header() {
           left: 0,
           right: 0,
           p: 2.5,
-          borderTop: '2px solid rgba(251, 191, 36, 0.2)',
+          borderTop: '1px solid rgba(251, 191, 36, 0.2)',
           textAlign: 'center',
-          zIndex: 1,
         }}
       >
         <Typography
@@ -198,68 +188,54 @@ function Header() {
           background: scrolled 
             ? 'rgba(15, 23, 42, 0.95)' 
             : 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '2px solid rgba(251, 191, 36, 0.2)',
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
+          borderBottom: '1px solid rgba(251, 191, 36, 0.2)',
           transition: 'all 0.3s ease',
-          boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.3)' : 'none',
+          boxShadow: scrolled ? '0 4px 12px rgba(0, 0, 0, 0.2)' : 'none',
         }}
       >
-        {/* Animated Background Elements */}
-        <div className="header-bg-glow"></div>
-        <div className="header-top-line"></div>
-
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Toolbar sx={{ py: 1.5 }}>
+        <Container maxWidth="lg">
+          <Toolbar sx={{ py: { xs: 1, md: 1.5 } }}>
             {/* Logo/Name */}
             <Box sx={{ 
               display: 'flex', 
               alignItems: 'center', 
               flexGrow: 1,
-              gap: 1.5
+              gap: { xs: 1, md: 1.5 }
             }}
             className="header-brand-container"
             >
               <Box
                 className="header-logo"
                 sx={{
-                  width: { xs: 40, md: 45 },
-                  height: { xs: 40, md: 45 },
-                  borderRadius: '12px',
+                  width: { xs: 38, md: 44 },
+                  height: { xs: 38, md: 44 },
+                  borderRadius: '10px',
                   background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 4px 20px rgba(251, 191, 36, 0.4)',
-                  transition: 'all 0.3s ease',
-                  position: 'relative',
-                  overflow: 'hidden',
+                  boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
+                  transition: 'transform 0.3s ease',
                   '&:hover': {
-                    transform: 'scale(1.1) rotate(5deg)',
-                    boxShadow: '0 6px 30px rgba(251, 191, 36, 0.6)',
-                  },
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent)',
-                    transform: 'translateX(-100%)',
+                    transform: 'scale(1.05)',
                   },
                 }}
               >
-                <CodeIcon sx={{ color: '#0f172a', fontSize: '1.5rem' }} />
+                <CodeIcon sx={{ color: '#0f172a', fontSize: { xs: '1.3rem', md: '1.5rem' } }} />
               </Box>
               <Typography 
                 variant="h6" 
                 className="header-brand-text"
                 sx={{ 
-                  fontWeight: 800,
-                  fontSize: { xs: '1.1rem', md: '1.5rem' },
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #3b82f6 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  backgroundSize: '200% auto',
+                  fontWeight: 700,
+                  fontSize: { xs: '1rem', sm: '1.2rem', md: '1.4rem' },
+                  color: '#fbbf24',
                   cursor: 'pointer',
+                  transition: 'color 0.3s ease',
+                  '&:hover': {
+                    color: '#f59e0b',
+                  },
                 }}
               >
                 Jeevan Maher
@@ -277,36 +253,23 @@ function Header() {
                     sx={{
                       color: '#f1f5f9',
                       fontWeight: 600,
-                      fontSize: '1rem',
-                      px: 2.5,
-                      py: 1,
-                      borderRadius: '25px',
+                      fontSize: '0.95rem',
+                      px: 2,
+                      py: 0.75,
+                      borderRadius: '8px',
                       textTransform: 'none',
                       transition: 'all 0.3s ease',
                       position: 'relative',
-                      overflow: 'hidden',
-                      border: '2px solid transparent',
+                      border: '1px solid transparent',
                       '&:hover': {
                         backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                        transform: 'translateY(-2px)',
-                        borderColor: 'rgba(251, 191, 36, 0.5)',
+                        borderColor: 'rgba(251, 191, 36, 0.3)',
                         color: '#fbbf24',
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(90deg, transparent, rgba(251,191,36,0.2), transparent)',
-                        transform: 'translateX(-100%)',
-                        transition: 'transform 0.6s ease',
-                      },
-                      '&:hover::before': {
-                        transform: 'translateX(100%)',
                       },
                       '&::after': {
                         content: '""',
                         position: 'absolute',
-                        bottom: 8,
+                        bottom: 6,
                         left: '50%',
                         transform: 'translateX(-50%) scaleX(0)',
                         width: '60%',
@@ -334,17 +297,16 @@ function Header() {
                 onClick={handleDrawerToggle}
                 className="header-mobile-menu-btn"
                 sx={{ 
-                  ml: 2,
-                  width: 44,
-                  height: 44,
+                  ml: 1,
+                  width: { xs: 40, sm: 44 },
+                  height: { xs: 40, sm: 44 },
                   backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                  border: '2px solid rgba(251, 191, 36, 0.3)',
+                  border: '1px solid rgba(251, 191, 36, 0.3)',
                   color: '#fbbf24',
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     backgroundColor: 'rgba(251, 191, 36, 0.2)',
-                    transform: 'scale(1.1)',
-                    boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
+                    transform: 'scale(1.05)',
                   },
                 }}
               >

@@ -1,242 +1,68 @@
 /* ========================================
-   HEADER SECTION - ADVANCED ANIMATIONS
+   HEADER SECTION - OPTIMIZED VERSION
    ======================================== */
 
 .header-appbar {
   position: relative;
-  overflow: hidden;
 }
 
-/* ========== ANIMATED BACKGROUND ELEMENTS ========== */
-
-/* Background Glow Effect */
-.header-bg-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.1) 0%, transparent 60%);
-  opacity: 0;
-  animation: glowPulseHeader 3s ease-in-out infinite;
-  z-index: 0;
-}
-
-/* Top Animated Line */
-.header-top-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #fbbf24 0%, #3b82f6 50%, #10b981 100%);
-  background-size: 200% auto;
-  animation: gradientSlideHeader 4s linear infinite;
-  z-index: 0;
-}
-
-/* Scrolled State */
-.header-appbar.scrolled .header-bg-glow {
-  opacity: 1;
-}
-
-/* ========== BRAND / LOGO ANIMATIONS ========== */
+/* ========== ENTRANCE ANIMATIONS ========== */
 
 .header-brand-container {
-  animation: slideInLeftHeader 0.8s ease forwards;
+  opacity: 0;
+  animation: slideInLeft 0.6s ease forwards;
 }
-
-.header-logo {
-  animation: rotateInHeader 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-}
-
-.header-logo::before {
-  animation: shimmerHeader 3s ease-in-out infinite;
-}
-
-.header-brand-text {
-  animation: gradientShiftHeader 4s ease infinite;
-}
-
-/* ========== DESKTOP NAVIGATION ANIMATIONS ========== */
 
 .header-nav-container {
-  animation: slideInRightHeader 0.8s ease forwards;
+  opacity: 0;
+  animation: slideInRight 0.6s ease forwards;
 }
 
 .header-nav-btn {
-  animation: fadeInDownHeader 0.6s ease forwards;
   opacity: 0;
+  animation: fadeInDown 0.5s ease forwards;
 }
 
-.nav-btn-0 {
-  animation-delay: 0.1s;
-}
-
-.nav-btn-1 {
-  animation-delay: 0.2s;
-}
-
-.nav-btn-2 {
-  animation-delay: 0.3s;
-}
-
-.nav-btn-3 {
-  animation-delay: 0.4s;
-}
-
-/* ========== MOBILE MENU BUTTON ========== */
+.nav-btn-0 { animation-delay: 0.1s; }
+.nav-btn-1 { animation-delay: 0.2s; }
+.nav-btn-2 { animation-delay: 0.3s; }
+.nav-btn-3 { animation-delay: 0.4s; }
 
 .header-mobile-menu-btn {
-  animation: popInHeader 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s backwards;
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.3s forwards;
 }
 
-.header-mobile-menu-btn:active {
-  transform: scale(0.95) !important;
-}
-
-/* ========================================
-   MOBILE DRAWER - ADVANCED ANIMATIONS
-   ======================================== */
-
-.mobile-drawer {
-  position: relative;
-}
-
-/* ========== DRAWER BACKGROUND EFFECTS ========== */
-
-/* Gradient Orbs */
-.drawer-bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(80px);
-  opacity: 0.15;
-  z-index: 0;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-
-.drawer-bg-orb.orb-1 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.5) 0%, transparent 70%);
-  top: -20%;
-  right: -20%;
-  animation: floatOrbDrawer 20s;
-}
-
-.drawer-bg-orb.orb-2 {
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, transparent 70%);
-  bottom: -15%;
-  left: -15%;
-  animation: floatOrbDrawer 18s reverse;
-}
-
-/* Grid Pattern */
-.drawer-grid-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(251, 191, 36, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(251, 191, 36, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: gridMoveDrawer 20s linear infinite;
-  z-index: 0;
-}
-
-/* ========== DRAWER HEADER ========== */
+/* ========== DRAWER ANIMATIONS ========== */
 
 .drawer-header {
-  animation: slideInDownHeader 0.5s ease forwards;
+  opacity: 0;
+  animation: slideInDown 0.4s ease forwards;
 }
-
-.drawer-close-btn {
-  animation: rotateInHeader 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s backwards;
-}
-
-/* ========== DRAWER NAV ITEMS ========== */
 
 .drawer-list-item {
-  animation: slideInRightDrawer 0.5s ease forwards;
   opacity: 0;
+  animation: slideInRight 0.4s ease forwards;
 }
 
-.drawer-item-0 {
-  animation-delay: 0.1s;
-}
-
-.drawer-item-1 {
-  animation-delay: 0.2s;
-}
-
-.drawer-item-2 {
-  animation-delay: 0.3s;
-}
-
-.drawer-item-3 {
-  animation-delay: 0.4s;
-}
-
-.drawer-nav-link:hover .drawer-link-arrow {
-  transform: translateX(4px) scale(1.2);
-  background-color: rgba(251, 191, 36, 0.4);
-}
-
-/* ========== DRAWER FOOTER ========== */
+.drawer-item-0 { animation-delay: 0.1s; }
+.drawer-item-1 { animation-delay: 0.2s; }
+.drawer-item-2 { animation-delay: 0.3s; }
+.drawer-item-3 { animation-delay: 0.4s; }
 
 .drawer-footer {
-  animation: fadeInHeader 0.6s ease 0.5s backwards;
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.4s forwards;
 }
 
 /* ========================================
-   KEYFRAME ANIMATIONS
+   KEYFRAME ANIMATIONS (MINIMAL)
    ======================================== */
 
-/* Header Background Animations */
-@keyframes glowPulseHeader {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-@keyframes gradientSlideHeader {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes shimmerHeader {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes gradientShiftHeader {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Header Entrance Animations */
-@keyframes slideInLeftHeader {
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
@@ -244,10 +70,10 @@
   }
 }
 
-@keyframes slideInRightHeader {
+@keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateX(30px);
   }
   to {
     opacity: 1;
@@ -255,7 +81,7 @@
   }
 }
 
-@keyframes fadeInDownHeader {
+@keyframes slideInDown {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -266,63 +92,10 @@
   }
 }
 
-@keyframes rotateInHeader {
+@keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: rotate(-180deg) scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-}
-
-@keyframes popInHeader {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeInHeader {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Drawer Animations */
-@keyframes floatOrbDrawer {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  33% {
-    transform: translate(30px, -40px);
-  }
-  66% {
-    transform: translate(-25px, 35px);
-  }
-}
-
-@keyframes gridMoveDrawer {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 30px 30px;
-  }
-}
-
-@keyframes slideInDownHeader {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-15px);
   }
   to {
     opacity: 1;
@@ -330,50 +103,12 @@
   }
 }
 
-@keyframes slideInRightDrawer {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(40px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* ========================================
-   HOVER EFFECTS & INTERACTIONS
-   ======================================== */
-
-/* Logo Shimmer on Hover */
-.header-logo:hover::before {
-  animation: shimmerHeader 0.8s ease;
-}
-
-/* Nav Button Ripple Effect */
-.header-nav-btn::before {
-  pointer-events: none;
-}
-
-/* Mobile Menu Button Pulse */
-.header-mobile-menu-btn::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid rgba(251, 191, 36, 0.5);
-  opacity: 0;
-  animation: pingHeader 2s ease-in-out infinite 1s;
-}
-
-@keyframes pingHeader {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50%, 100% {
-    transform: scale(1.3);
-    opacity: 0;
   }
 }
 
@@ -381,112 +116,27 @@
    RESPONSIVE DESIGN
    ======================================== */
 
-/* Tablet */
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .header-nav-btn {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
     font-size: 0.9rem !important;
-  }
-
-  .header-brand-text {
-    font-size: 1.3rem !important;
   }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-  .header-appbar {
-    padding: 0;
-  }
-
-  .header-logo {
-    width: 36px !important;
-    height: 36px !important;
-  }
-
-  .header-logo svg {
-    font-size: 1.3rem !important;
-  }
-
-  .header-brand-text {
-    font-size: 1rem !important;
-  }
-
-  .header-mobile-menu-btn {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  /* Drawer Adjustments */
   .mobile-drawer {
     width: 260px !important;
   }
-
-  .drawer-bg-orb {
-    filter: blur(60px);
-  }
-
-  .drawer-bg-orb.orb-1,
-  .drawer-bg-orb.orb-2 {
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-  .drawer-grid-pattern {
-    background-size: 20px 20px;
-  }
-
-  .drawer-nav-link {
-    padding: 14px 20px !important;
-  }
-
-  .drawer-nav-link span {
-    font-size: 1rem !important;
-  }
 }
 
-/* Extra Small Mobile */
 @media (max-width: 400px) {
-  .header-brand-text {
-    font-size: 0.95rem !important;
-  }
-
   .mobile-drawer {
     width: 240px !important;
   }
-
-  .drawer-header {
-    padding: 1.5rem !important;
-  }
-
-  .drawer-nav-link {
-    padding: 12px 16px !important;
-  }
-}
-
-/* ========================================
-   SCROLL EFFECTS
-   ======================================== */
-
-/* Header shrinks slightly when scrolled */
-.header-appbar.scrolled .header-logo {
-  width: 40px !important;
-  height: 40px !important;
-}
-
-.header-appbar.scrolled .header-brand-text {
-  font-size: 1.3rem !important;
-}
-
-@media (max-width: 600px) {
-  .header-appbar.scrolled .header-logo {
-    width: 34px !important;
-    height: 34px !important;
-  }
-
-  .header-appbar.scrolled .header-brand-text {
-    font-size: 0.95rem !important;
+  
+  .header-brand-text {
+    font-size: 0.9rem !important;
   }
 }
 
@@ -503,13 +153,6 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
-  .drawer-bg-orb,
-  .drawer-grid-pattern,
-  .header-bg-glow,
-  .header-top-line {
-    animation: none !important;
-  }
 }
 
 /* Focus Visible */
@@ -517,8 +160,8 @@
 .header-mobile-menu-btn:focus-visible,
 .drawer-close-btn:focus-visible,
 .drawer-nav-link:focus-visible {
-  outline: 3px solid #fbbf24;
-  outline-offset: 4px;
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
 }
 
 /* High Contrast */
@@ -528,89 +171,6 @@
   .drawer-nav-link {
     border-width: 2px !important;
   }
-
-  .header-top-line {
-    height: 3px;
-  }
-}
-
-/* ========================================
-   PERFORMANCE OPTIMIZATIONS
-   ======================================== */
-
-/* GPU Acceleration */
-.header-logo,
-.header-brand-text,
-.header-nav-btn,
-.header-mobile-menu-btn,
-.drawer-nav-link,
-.drawer-close-btn {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-.drawer-bg-orb,
-.drawer-grid-pattern,
-.header-bg-glow {
-  will-change: transform, opacity;
-}
-
-/* ========================================
-   TRANSITIONS
-   ======================================== */
-
-/* Smooth transitions for all interactive elements */
-.header-nav-btn,
-.header-mobile-menu-btn,
-.drawer-nav-link,
-.drawer-close-btn,
-.header-logo {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ========================================
-   DRAWER BACKDROP EFFECT
-   ======================================== */
-
-.mobile-drawer-container .MuiBackdrop-root {
-  animation: fadeInHeader 0.3s ease forwards;
-}
-
-/* ========================================
-   SPECIAL EFFECTS
-   ======================================== */
-
-/* Add particle effect on logo hover */
-.header-logo::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 12px;
-  background: linear-gradient(45deg, #fbbf24, #3b82f6, #10b981);
-  opacity: 0;
-  filter: blur(8px);
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.header-logo:hover::after {
-  opacity: 0.4;
-  animation: rotateGradient 2s linear infinite;
-}
-
-@keyframes rotateGradient {
-  0% {
-    filter: blur(8px) hue-rotate(0deg);
-  }
-  100% {
-    filter: blur(8px) hue-rotate(360deg);
-  }
-}
-
-/* Brand text glow on hover */
-.header-brand-text:hover {
-  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.5));
 }
 
 /* ========================================

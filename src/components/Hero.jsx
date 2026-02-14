@@ -26,13 +26,14 @@ function Hero() {
           </h1>
 
           <h2 className="hero-subtitle">
-            Full Stack Developer / QA Tester
+            I am a Software Tester
           </h2>
 
           <p className="hero-desc">
-            Passionate Full-Stack Developer and QA Tester dedicated to building
-            high-quality, bug-free web applications with great UI/UX and strong
-            manual testing skills.
+            Detail-oriented Software Tester with strong knowledge of manual testing,
+            functional testing, regression testing, and bug reporting. 
+            I am passionate about ensuring software quality and delivering reliable, 
+            high-performance applications.
           </p>
 
           <div className="hero-buttons">
@@ -49,20 +50,16 @@ function Hero() {
         {/* RIGHT IMAGE WITH ADVANCED ANIMATIONS */}
         <div className="hero-image">
           <div className="image-wrapper">
-            {/* Multiple Rotating Rings */}
             <div className="orbit-ring ring-1"></div>
             <div className="orbit-ring ring-2"></div>
             <div className="orbit-ring ring-3"></div>
             
-            {/* Pulsing Glow Effect */}
             <div className="glow-pulse"></div>
 
-            {/* Main Image Container */}
             <div className="image-ring">
               <img src="/assets/jeevan.jpg" alt="Jeevan Maher" />
             </div>
 
-            {/* Floating Particles Around Image */}
             <div className="particle particle-1"></div>
             <div className="particle particle-2"></div>
             <div className="particle particle-3"></div>

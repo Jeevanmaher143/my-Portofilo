@@ -17,17 +17,17 @@ const projects = [
   {
     title: "Gram Panchayat Website",
     description:
-      "Developed a full-stack Gram Panchayat Management Website to digitize village administration. The platform provides online access to notices, government schemes, village services, development projects, and a photo gallery. It includes an admin dashboard to manage content securely and improves communication between the Panchayat and villagers. Built using the MERN stack with a responsive and user-friendly design.",
+      "Developed and tested a full-stack Gram Panchayat Management Website to digitize village administration. The platform provides online access to notices, government schemes, village services, development projects, and a photo gallery. Includes an admin dashboard with secure content management. Conducted comprehensive testing with 18 test scenarios covering 100+ test cases including functional testing, UI/UX validation, security testing, API testing, and cross-browser compatibility. Built using the MERN stack with responsive design and deployed on Render & Vercel with Cloudinary integration.",
     icon: <Building2 size={48} />,
     color: "#8B5CF6",
-    tags: ["MERN Stack", "Admin Dashboard", "Render& Vercel ", "Domain.in","CLoudnary"],
+    tags: ["MERN Stack", "Testing (100+ Cases)", "Render & Vercel", "Domain.in", "Cloudinary"],
     githubUrl: "https://github.com/Jeevanmaher143",
     liveUrl: "https://www.gproshankheda.in/",
   },
   {
     title: "Weather App",
     description:
-      "Developed an interactive and responsive weather application that shows real-time weather updates for any city using the OpenWeather API. The app features a modern and clean design built with React and Material UI, including smooth animations and a two-column layout — the city input on the left and live weather data on the right. It displays key weather details such as temperature, humidity, wind speed, and visibility.",
+      "Developed an interactive and responsive weather application that shows real-time weather updates for any city using the OpenWeather API. The app features a modern and clean design built with React and Material UI, including smooth transitions and a two-column layout — the city input on the left and live weather data on the right. It displays key weather details such as temperature, humidity, wind speed, and visibility with error handling and loading states.",
     icon: <Cloud size={48} />,
     color: "#3B82F6",
     tags: ["React", "Material UI", "API", "Responsive"],
@@ -37,10 +37,10 @@ const projects = [
   {
     title: "Unity Share - Community Resource Sharing Platform",
     description:
-      "Developed a web-based platform that allows users to share, borrow, or donate resources within their community. The system helps people connect and make better use of available resources through an easy-to-use interface. Users can post available items, search for needed ones, and manage their listings through a personal dashboard.",
+      "Developed a web-based platform that allows users to share, borrow, or donate resources within their community. The system helps people connect and make better use of available resources through an easy-to-use interface. Users can post available items, search for needed ones, and manage their listings through a personal dashboard with real-time updates.",
     icon: <Users size={48} />,
     color: "#10B981",
-    tags: ["MERN Stack", "MongoDB", "Dashboard", "Basic Needs"],
+    tags: ["MERN Stack", "MongoDB", "Dashboard", "Community"],
     githubUrl: "https://github.com/Jeevanmaher143",
     liveUrl: null,
   },
@@ -50,7 +50,7 @@ const projects = [
       "Created a comprehensive pet adoption platform connecting animal shelters with potential adopters. Features include pet profiles with detailed information, advanced search filters, adoption application system, and user authentication. Built with focus on user experience and responsive design to help pets find their forever homes.",
     icon: <Heart size={48} />,
     color: "#EC4899",
-    tags: ["React.js", "Node.js", "Express", "Admin", "Authentication"],
+    tags: ["React.js", "Node.js", "Express", "Authentication"],
     githubUrl: "https://github.com/Jeevanmaher143",
     liveUrl: null,
   },
@@ -68,22 +68,16 @@ function Projects() {
         overflow: "hidden",
       }}
     >
-      {/* Animated Background Elements */}
-      <div className="project-bg-orb orb-1"></div>
-      <div className="project-bg-orb orb-2"></div>
-      <div className="project-bg-shape shape-1"></div>
-      <div className="project-bg-shape shape-2"></div>
-
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <Box sx={{ textAlign: "center", mb: 6 }} className="projects-header">
+        <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }} className="projects-header">
           <Typography
             variant="overline"
             className="projects-tag"
             sx={{
               color: "#fbbf24",
               fontWeight: 700,
-              fontSize: "1rem",
+              fontSize: { xs: "0.8rem", md: "0.9rem" },
               letterSpacing: "0.15em",
               mb: 1,
               display: "block",
@@ -98,11 +92,8 @@ function Projects() {
             sx={{
               fontWeight: 800,
               mb: 2,
-              fontSize: { xs: "2rem", md: "3rem" },
-              background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #3b82f6 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundSize: "200% auto",
+              fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.75rem" },
+              color: "#ffffff",
             }}
           >
             My Projects
@@ -114,17 +105,17 @@ function Projects() {
               color: "#cbd5e1",
               maxWidth: "600px",
               mx: "auto",
-              fontSize: { xs: "1rem", md: "1.1rem" },
+              fontSize: { xs: "0.9rem", md: "1rem" },
               lineHeight: 1.7,
+              px: { xs: 2, sm: 0 },
             }}
           >
-            Here are some of my recent projects that showcase my skills and
-            creativity
+            Here are some of my recent projects that showcase my skills and creativity
           </Typography>
         </Box>
 
         {/* Projects Grid */}
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {projects.map((project, index) => (
             <Grid item key={index} xs={12} md={6} className="project-grid-item">
               <Card
@@ -134,11 +125,10 @@ function Projects() {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  borderRadius: "24px",
-                  border: "2px solid rgba(251, 191, 36, 0.2)",
-                  background: "rgba(30, 41, 59, 0.6)",
-                  backdropFilter: "blur(20px)",
-                  transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                  borderRadius: { xs: "16px", md: "20px" },
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  background: "rgba(30, 41, 59, 0.5)",
+                  transition: "all 0.3s ease",
                   overflow: "hidden",
                   position: "relative",
                   "&::before": {
@@ -147,109 +137,57 @@ function Projects() {
                     top: 0,
                     left: 0,
                     right: 0,
-                    height: "4px",
-                    background: `linear-gradient(90deg, ${project.color}, ${project.color}CC)`,
-                    opacity: 0.8,
-                  },
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: "-100%",
-                    width: "100%",
-                    height: "100%",
-                    background: `linear-gradient(90deg, transparent, ${project.color}15, transparent)`,
-                    transition: "left 0.6s",
+                    height: "3px",
+                    background: project.color,
+                    opacity: 0.7,
                   },
                   "&:hover": {
-                    transform: "translateY(-12px)",
-                    boxShadow: `0 25px 50px ${project.color}40, 0 0 80px ${project.color}20`,
-                    borderColor: project.color,
-                    background: "rgba(30, 41, 59, 0.8)",
-                    "&::after": {
-                      left: "100%",
-                    },
+                    transform: "translateY(-8px)",
+                    boxShadow: `0 12px 24px rgba(0, 0, 0, 0.3)`,
+                    borderColor: `${project.color}40`,
+                    background: "rgba(30, 41, 59, 0.7)",
                     "& .project-icon-wrapper": {
-                      transform: "scale(1.15) rotate(-5deg)",
-                      background: `linear-gradient(135deg, ${project.color}30, ${project.color}15)`,
+                      background: `linear-gradient(135deg, ${project.color}25, ${project.color}10)`,
                     },
                     "& .project-icon": {
-                      transform: "rotate(15deg) scale(1.1)",
-                      filter: `drop-shadow(0 0 20px ${project.color})`,
-                    },
-                    "& .project-particle": {
-                      opacity: 1,
-                      transform: "scale(1.2)",
+                      transform: "scale(1.1)",
                     },
                   },
                 }}
               >
-                {/* Decorative Particles */}
-                <Box
-                  className="project-particle particle-1"
-                  sx={{
-                    position: "absolute",
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    background: project.color,
-                    top: "20%",
-                    right: "10%",
-                    opacity: 0,
-                    transition: "all 0.5s",
-                  }}
-                />
-                <Box
-                  className="project-particle particle-2"
-                  sx={{
-                    position: "absolute",
-                    width: "6px",
-                    height: "6px",
-                    borderRadius: "50%",
-                    background: project.color,
-                    bottom: "30%",
-                    left: "15%",
-                    opacity: 0,
-                    transition: "all 0.5s 0.1s",
-                  }}
-                />
-
                 {/* Icon Section */}
                 <Box
                   className="project-icon-wrapper"
                   sx={{
-                    background: `linear-gradient(135deg, ${project.color}20, ${project.color}10)`,
-                    p: 4,
+                    background: `linear-gradient(135deg, ${project.color}15, ${project.color}08)`,
+                    p: { xs: 3, md: 4 },
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    minHeight: "180px",
+                    minHeight: { xs: "140px", md: "160px" },
                     position: "relative",
-                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    "&::before": {
-                      content: '""',
-                      position: "absolute",
-                      inset: "20px",
-                      borderRadius: "50%",
-                      border: `2px dashed ${project.color}40`,
-                      animation: "rotate 20s linear infinite",
-                    },
+                    transition: "all 0.3s ease",
                   }}
                 >
                   <Box
                     className="project-icon"
                     sx={{
                       color: project.color,
-                      transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                      filter: `drop-shadow(0 0 10px ${project.color}80)`,
-                      zIndex: 1,
+                      transition: "transform 0.3s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      "& svg": {
+                        width: { xs: "40px", md: "48px" },
+                        height: { xs: "40px", md: "48px" },
+                      },
                     }}
                   >
                     {project.icon}
                   </Box>
                 </Box>
 
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                <CardContent sx={{ flexGrow: 1, p: { xs: 2.5, md: 3 } }}>
                   <Typography
                     gutterBottom
                     variant="h5"
@@ -258,8 +196,8 @@ function Projects() {
                       fontWeight: 700,
                       mb: 2,
                       color: "#f1f5f9",
-                      fontSize: { xs: "1.25rem", md: "1.4rem" },
-                      transition: "color 0.3s",
+                      fontSize: { xs: "1.1rem", md: "1.3rem" },
+                      lineHeight: 1.3,
                     }}
                   >
                     {project.title}
@@ -271,7 +209,7 @@ function Projects() {
                       color: "#cbd5e1",
                       lineHeight: 1.7,
                       mb: 2,
-                      fontSize: "0.95rem",
+                      fontSize: { xs: "0.85rem", md: "0.9rem" },
                     }}
                   >
                     {project.description}
@@ -294,15 +232,15 @@ function Projects() {
                         size="small"
                         className="project-tag"
                         sx={{
-                          backgroundColor: `${project.color}20`,
+                          backgroundColor: `${project.color}15`,
                           color: project.color,
                           fontWeight: 600,
-                          fontSize: "0.75rem",
-                          border: `1px solid ${project.color}40`,
+                          fontSize: { xs: "0.7rem", md: "0.75rem" },
+                          border: `1px solid ${project.color}30`,
                           transition: "all 0.3s",
+                          height: { xs: "24px", md: "26px" },
                           "&:hover": {
-                            backgroundColor: `${project.color}30`,
-                            transform: "translateY(-2px)",
+                            backgroundColor: `${project.color}25`,
                           },
                         }}
                       />
@@ -310,30 +248,29 @@ function Projects() {
                   </Box>
                 </CardContent>
 
-                <CardActions sx={{ p: 3, pt: 0, gap: 1 }}>
+                <CardActions sx={{ p: { xs: 2.5, md: 3 }, pt: 0, gap: 1, flexWrap: "wrap" }}>
                   {project.liveUrl && (
                     <Button
                       size="medium"
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      startIcon={<ExternalLink size={18} />}
+                      startIcon={<ExternalLink size={16} />}
                       className="project-btn"
                       sx={{
-                        background: `linear-gradient(135deg, ${project.color}, ${project.color}CC)`,
+                        background: `linear-gradient(135deg, ${project.color}, ${project.color}DD)`,
                         color: "#fff",
                         fontWeight: 600,
                         textTransform: "none",
-                        borderRadius: "12px",
-                        px: 2.5,
-                        py: 1,
+                        borderRadius: "8px",
+                        px: { xs: 2, md: 2.5 },
+                        py: { xs: 0.75, md: 1 },
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
                         border: "none",
                         transition: "all 0.3s ease",
-                        boxShadow: `0 4px 15px ${project.color}40`,
                         "&:hover": {
-                          transform: "translateY(-3px)",
-                          boxShadow: `0 8px 25px ${project.color}60`,
-                          background: `linear-gradient(135deg, ${project.color}DD, ${project.color})`,
+                          transform: "translateY(-2px)",
+                          boxShadow: `0 4px 12px ${project.color}50`,
                         },
                       }}
                     >
@@ -345,23 +282,24 @@ function Projects() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    startIcon={<Github size={18} />}
+                    startIcon={<Github size={16} />}
                     className="project-btn-outline"
                     sx={{
                       color: "#f1f5f9",
                       fontWeight: 600,
                       textTransform: "none",
-                      borderRadius: "12px",
-                      px: 2.5,
-                      py: 1,
-                      border: `2px solid ${project.color}50`,
+                      borderRadius: "8px",
+                      px: { xs: 2, md: 2.5 },
+                      py: { xs: 0.75, md: 1 },
+                      fontSize: { xs: "0.8rem", md: "0.875rem" },
+                      border: `1px solid ${project.color}40`,
                       transition: "all 0.3s ease",
                       background: "rgba(30, 41, 59, 0.5)",
                       "&:hover": {
                         borderColor: project.color,
                         color: project.color,
-                        background: `${project.color}15`,
-                        transform: "translateY(-3px)",
+                        background: `${project.color}10`,
+                        transform: "translateY(-2px)",
                       },
                     }}
                   >
