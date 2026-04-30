@@ -17,6 +17,8 @@ import {
 
 const technicalSkills = [
   // Core Testing
+    { icon: FileCode, name: "Automation Testing", color: "#f59e0b" },
+
   { icon: FileCode, name: "Manual Testing", color: "#f59e0b" },
   { icon: FileCode, name: "Functional Testing", color: "#3b82f6" },
   { icon: FileCode, name: "Regression Testing", color: "#8b5cf6" },

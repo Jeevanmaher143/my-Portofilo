@@ -4,7 +4,8 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import Skill from "./components/Skill";
+import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import "./App.css";
 import {
   Box,
@@ -65,7 +66,8 @@ function App() {
       {/* Main content */}
       <main>
         <Hero />
-        <Skill />
+        <Skills />
+        <Experience />
         <Projects />
         <About />
         <Contact />
