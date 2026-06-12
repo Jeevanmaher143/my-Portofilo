@@ -1,346 +1,175 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  AppBar, 
-  Toolbar, 
-  Typography, 
-  Button, 
-  Box, 
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  useTheme,
-  useMediaQuery,
-  Container
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import CodeIcon from '@mui/icons-material/Code';
-import './Header.css';
+import React from "react";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import BugReportIcon from "@mui/icons-material/BugReport";
+import { Bot } from "lucide-react";
 
-function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+const headerThemes = {
+  manual: {
+    accent: "#fbbf24",
+    accentSoft: "#f59e0b",
+    alt: "#3b82f6",
+    appBar:
+      "linear-gradient(90deg, rgba(2,6,23,0.94), rgba(15,23,42,0.92))",
+    border: "rgba(251,191,36,0.16)",
+    logoBg: "linear-gradient(135deg,#fbbf24,#f59e0b)",
+    logoShadow: "0 0 20px rgba(251,191,36,0.34)",
+    label: "Jeevan Maher",
+    subLabel: "Manual QA",
+  },
+  automation: {
+    accent: "#67e8f9",
+    accentSoft: "#818cf8",
+    alt: "#34d399",
+    appBar:
+      "linear-gradient(90deg, rgba(2,6,23,0.96), rgba(7,17,31,0.94), rgba(2,6,23,0.96))",
+    border: "rgba(103,232,249,0.22)",
+    logoBg: "linear-gradient(135deg,#06b6d4,#2563eb)",
+    logoShadow: "0 0 24px rgba(103,232,249,0.38)",
+    label: "Automation AI QA",
+    subLabel: "Robotic Testing",
+  },
+};
 
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+function Header({ activeTab, setActiveTab }) {
+  const isAutomation = activeTab === "automation";
+  const theme = isAutomation ? headerThemes.automation : headerThemes.manual;
+
+  const getButtonStyles = (tabName) => {
+    const active = activeTab === tabName;
+
+    return {
+      px: { xs: 1.25, sm: 2.4, md: 3 },
+      py: 1,
+      minHeight: 40,
+      borderRadius: "10px",
+      color: active ? "#020617" : theme.accent,
+      background: active
+        ? `linear-gradient(135deg,${theme.accent},${theme.accentSoft})`
+        : "transparent",
+      border: active ? "1px solid transparent" : `1px solid transparent`,
+      fontWeight: 800,
+      fontSize: { xs: "0.78rem", sm: "0.9rem" },
+      textTransform: "none",
+      transition:
+        "transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease",
+      "&:hover": {
+        background: active
+          ? `linear-gradient(135deg,${theme.accent},${theme.accentSoft})`
+          : `color-mix(in srgb, ${theme.accent} 12%, transparent)`,
+        borderColor: `color-mix(in srgb, ${theme.accent} 28%, transparent)`,
+        transform: "translateY(-2px)",
+      },
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
   };
 
-  const navItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills'},
-    { label: 'Contact', href: '#contact' },
-    {label : 'Experience',href:'#experience'},
-  ];
-
-  // Mobile Drawer
-  const drawer = (
-    <Box 
-      className="mobile-drawer"
-      sx={{ 
-        width: 280,
-        height: '100%',
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-        color: 'white',
-        position: 'relative',
+  return (
+    <AppBar
+      position="sticky"
+      elevation={0}
+      className={`site-header ${isAutomation ? "automation-header" : "manual-header"}`}
+      sx={{
+        background: theme.appBar,
+        backdropFilter: "blur(14px)",
+        borderBottom: `1px solid ${theme.border}`,
+        overflow: "hidden",
       }}
-      role="presentation"
     >
-      {/* Simple gradient overlay */}
-      <Box
+      <Toolbar
         sx={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: '150px',
-          height: '150px',
-          background: 'radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%)',
-          pointerEvents: 'none',
+          display: "flex",
+          justifyContent: "space-between",
+          gap: 2,
+          py: 1,
+          px: { xs: 1.4, sm: 3 },
         }}
-      />
-
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        p: 2.5,
-        borderBottom: '1px solid rgba(251, 191, 36, 0.2)',
-      }}
-      className="drawer-header"
       >
-        <Typography variant="h6" sx={{ 
-          fontWeight: 700,
-          color: '#fbbf24',
-        }}>
-          Menu
-        </Typography>
-        <IconButton 
-          onClick={handleDrawerToggle}
-          className="drawer-close-btn"
-          sx={{ 
-            color: '#fbbf24',
-            '&:hover': {
-              backgroundColor: 'rgba(251, 191, 36, 0.1)',
-            },
+        <Box
+          className="header-brand-container"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: { xs: 1, sm: 1.4 },
+            minWidth: 0,
           }}
         >
-          <CloseIcon />
-        </IconButton>
-      </Box>
-
-      <List sx={{ p: 2 }}>
-        {navItems.map((item, index) => (
-          <ListItem 
-            key={item.label} 
-            disablePadding
-            className={`drawer-list-item drawer-item-${index}`}
+          <Box
+            className={isAutomation ? "robotic-logo" : ""}
+            sx={{
+              width: { xs: 40, sm: 45 },
+              height: { xs: 40, sm: 45 },
+              borderRadius: isAutomation ? "12px" : "14px",
+              background: theme.logoBg,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              boxShadow: theme.logoShadow,
+              border: `1px solid color-mix(in srgb, ${theme.accent} 36%, transparent)`,
+              flex: "0 0 auto",
+            }}
           >
-            <ListItemButton 
-              href={item.href}
-              onClick={handleDrawerToggle}
-              className="drawer-nav-link"
+            {isAutomation ? (
+              <Bot size={24} color="#020617" strokeWidth={2.5} />
+            ) : (
+              <BugReportIcon sx={{ color: "#020617" }} />
+            )}
+          </Box>
+
+          <Box sx={{ minWidth: 0 }}>
+            <Typography
+              className="header-brand-text"
               sx={{
-                py: 1.5,
-                px: 2,
-                mb: 1,
-                borderRadius: '8px',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'rgba(30, 41, 59, 0.5)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                  borderColor: '#fbbf24',
-                  transform: 'translateX(8px)',
-                },
+                color: theme.accent,
+                fontWeight: 900,
+                fontSize: { xs: "0.95rem", sm: "1.15rem" },
+                lineHeight: 1.1,
+                whiteSpace: "nowrap",
               }}
             >
-              <ListItemText 
-                primary={item.label}
-                primaryTypographyProps={{
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: '#f1f5f9',
-                }}
-              />
-              <Box
-                sx={{
-                  color: '#fbbf24',
-                  fontSize: '1.2rem',
-                  transition: 'transform 0.3s ease',
-                  '.drawer-nav-link:hover &': {
-                    transform: 'translateX(4px)',
-                  },
-                }}
-              >
-                →
-              </Box>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+              {theme.label}
+            </Typography>
+            <Typography
+              sx={{
+                display: { xs: "none", sm: "block" },
+                color: "rgba(203,213,225,0.72)",
+                fontWeight: 700,
+                fontSize: "0.72rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                mt: 0.35,
+              }}
+            >
+              {theme.subLabel}
+            </Typography>
+          </Box>
+        </Box>
 
-      {/* Drawer Footer */}
-      <Box
-        className="drawer-footer"
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          p: 2.5,
-          borderTop: '1px solid rgba(251, 191, 36, 0.2)',
-          textAlign: 'center',
-        }}
-      >
-        <Typography
-          variant="body2"
+        <Box
+          className="header-nav-container"
           sx={{
-            color: 'rgba(255, 255, 255, 0.6)',
-            fontSize: '0.85rem',
+            display: "flex",
+            gap: { xs: 0.7, sm: 1.1 },
+            background: "rgba(255,255,255,0.035)",
+            p: 0.55,
+            borderRadius: "14px",
+            border: `1px solid ${theme.border}`,
+            boxShadow: isAutomation
+              ? "inset 0 0 18px rgba(103,232,249,0.08)"
+              : "inset 0 0 18px rgba(251,191,36,0.06)",
           }}
         >
-          © 2024 Jeevan Maher
-        </Typography>
-      </Box>
-    </Box>
-  );
+          <Button onClick={() => setActiveTab("manual")} sx={getButtonStyles("manual")}>
+            Manual Testing
+          </Button>
 
-  return (
-    <>
-      <AppBar 
-        position="sticky" 
-        elevation={0}
-        className={`header-appbar ${scrolled ? 'scrolled' : ''}`}
-        sx={{ 
-          background: scrolled 
-            ? 'rgba(15, 23, 42, 0.95)' 
-            : 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          backdropFilter: scrolled ? 'blur(10px)' : 'none',
-          borderBottom: '1px solid rgba(251, 191, 36, 0.2)',
-          transition: 'all 0.3s ease',
-          boxShadow: scrolled ? '0 4px 12px rgba(0, 0, 0, 0.2)' : 'none',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Toolbar sx={{ py: { xs: 1, md: 1.5 } }}>
-            {/* Logo/Name */}
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              flexGrow: 1,
-              gap: { xs: 1, md: 1.5 }
-            }}
-            className="header-brand-container"
-            >
-              <Box
-                className="header-logo"
-                sx={{
-                  width: { xs: 38, md: 44 },
-                  height: { xs: 38, md: 44 },
-                  borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
-                  transition: 'transform 0.3s ease',
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                  },
-                }}
-              >
-                <CodeIcon sx={{ color: '#0f172a', fontSize: { xs: '1.3rem', md: '1.5rem' } }} />
-              </Box>
-              <Typography 
-                variant="h6" 
-                className="header-brand-text"
-                sx={{ 
-                  fontWeight: 700,
-                  fontSize: { xs: '1rem', sm: '1.2rem', md: '1.4rem' },
-                  color: '#fbbf24',
-                  cursor: 'pointer',
-                  transition: 'color 0.3s ease',
-                  '&:hover': {
-                    color: '#f59e0b',
-                  },
-                }}
-              >
-                Jeevan Maher
-              </Typography>
-            </Box>
-
-            {/* Desktop Navigation */}
-            {!isMobile && (
-              <Box sx={{ display: 'flex', gap: 1 }} className="header-nav-container">
-                {navItems.map((item, index) => (
-                  <Button
-                    key={item.label}
-                    href={item.href}
-                    className={`header-nav-btn nav-btn-${index}`}
-                    sx={{
-                      color: '#f1f5f9',
-                      fontWeight: 600,
-                      fontSize: '0.95rem',
-                      px: 2,
-                      py: 0.75,
-                      borderRadius: '8px',
-                      textTransform: 'none',
-                      transition: 'all 0.3s ease',
-                      position: 'relative',
-                      border: '1px solid transparent',
-                      '&:hover': {
-                        backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                        borderColor: 'rgba(251, 191, 36, 0.3)',
-                        color: '#fbbf24',
-                      },
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        bottom: 6,
-                        left: '50%',
-                        transform: 'translateX(-50%) scaleX(0)',
-                        width: '60%',
-                        height: '2px',
-                        backgroundColor: '#fbbf24',
-                        transition: 'transform 0.3s ease',
-                      },
-                      '&:hover::after': {
-                        transform: 'translateX(-50%) scaleX(1)',
-                      },
-                    }}
-                  >
-                    {item.label}
-                  </Button>
-                ))}
-              </Box>
-            )}
-
-            {/* Mobile Menu Icon */}
-            {isMobile && (
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="end"
-                onClick={handleDrawerToggle}
-                className="header-mobile-menu-btn"
-                sx={{ 
-                  ml: 1,
-                  width: { xs: 40, sm: 44 },
-                  height: { xs: 40, sm: 44 },
-                  backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                  border: '1px solid rgba(251, 191, 36, 0.3)',
-                  color: '#fbbf24',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    backgroundColor: 'rgba(251, 191, 36, 0.2)',
-                    transform: 'scale(1.05)',
-                  },
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
-          </Toolbar>
-        </Container>
-      </AppBar>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        className="mobile-drawer-container"
-        ModalProps={{
-          keepMounted: true,
-        }}
-        sx={{
-          '& .MuiDrawer-paper': {
-            boxSizing: 'border-box',
-            width: 280,
-          },
-          '& .MuiBackdrop-root': {
-            backdropFilter: 'blur(4px)',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          },
-        }}
-      >
-        {drawer}
-      </Drawer>
-    </>
+          <Button
+            onClick={() => setActiveTab("automation")}
+            sx={getButtonStyles("automation")}
+          >
+            Automation Testing
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 

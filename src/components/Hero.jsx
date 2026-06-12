@@ -2,70 +2,82 @@ import React from "react";
 import { Download, Code } from "lucide-react";
 import "./Hero.css";
 
-function Hero() {
+export default function Hero() {
   return (
-    <section className="hero">
-      {/* Animated Background Orbs */}
-      <div className="bg-orb orb-1"></div>
-      <div className="bg-orb orb-2"></div>
-      <div className="bg-orb orb-3"></div>
+    <section className="hero" id="home">
+      {/* bg orbs — decorative, aria hidden */}
+      <div className="hero-orb hero-orb-1" aria-hidden="true" />
+      <div className="hero-orb hero-orb-2" aria-hidden="true" />
 
-      {/* Floating Geometric Shapes */}
-      <div className="float-shape shape-1"></div>
-      <div className="float-shape shape-2"></div>
-      <div className="float-shape shape-3"></div>
+      {/* floating geometry */}
+      <div className="hero-geo hero-geo-1" aria-hidden="true" />
+      <div className="hero-geo hero-geo-2" aria-hidden="true" />
+      <div className="hero-geo hero-geo-3" aria-hidden="true" />
 
       <div className="hero-container">
 
-        {/* LEFT CONTENT */}
+        {/* ── LEFT: content ── */}
         <div className="hero-content">
           <span className="hero-tag">Welcome to my portfolio</span>
 
           <h1 className="hero-title">
-            Hi, I'm <span>Jeevan Maher</span>
+            Hi, I'm{" "}
+            <span className="hero-name">Jeevan Maher</span>
           </h1>
 
-          <h2 className="hero-subtitle">
+          <h2 className="hero-sub">
+            <span className="hero-sub-line" aria-hidden="true" />
             I am a Software Tester
           </h2>
 
           <p className="hero-desc">
             Detail-oriented Software Tester with strong knowledge of manual testing,
-            functional testing, regression testing, and bug reporting. 
-            I am passionate about ensuring software quality and delivering reliable, 
+            functional testing, regression testing, and bug reporting.
+            Passionate about ensuring software quality and delivering reliable,
             high-performance applications.
           </p>
 
-          <div className="hero-buttons">
+          <div className="hero-actions">
             <a href="/jeevan-resume.pdf" download className="btn-primary">
-              <Download size={18} /> Download Resume
+              <Download size={18} aria-hidden="true" />
+              Download Resume
             </a>
-
             <a href="#projects" className="btn-outline">
-              <Code size={18} /> View Projects
+              <Code size={18} aria-hidden="true" />
+              View Projects
             </a>
           </div>
         </div>
 
-        {/* RIGHT IMAGE WITH ADVANCED ANIMATIONS */}
-        <div className="hero-image">
-          <div className="image-wrapper">
-            <div className="orbit-ring ring-1"></div>
-            <div className="orbit-ring ring-2"></div>
-            <div className="orbit-ring ring-3"></div>
-            
-            <div className="glow-pulse"></div>
+        {/* ── RIGHT: image ── */}
+        <div className="hero-img-col" aria-hidden="true">
+          <div className="hi-wrap">
+            {/* orbit rings */}
+            <div className="hi-ring hi-r1" />
+            <div className="hi-ring hi-r2" />
+            <div className="hi-ring hi-r3" />
 
-            <div className="image-ring">
-              <img src="/assets/jeevan.jpg" alt="Jeevan Maher" />
+            {/* glow */}
+            <div className="hi-glow" />
+
+            {/* circular photo */}
+            <div className="hi-photo">
+              <img
+                src="/assets/jeevan.jpg"
+                alt="Jeevan Maher"
+                width="290"
+                height="290"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+              />
             </div>
 
-            <div className="particle particle-1"></div>
-            <div className="particle particle-2"></div>
-            <div className="particle particle-3"></div>
-            <div className="particle particle-4"></div>
-            <div className="particle particle-5"></div>
-            <div className="particle particle-6"></div>
+            {/* particles */}
+            <span className="hi-dot hi-dot-1" />
+            <span className="hi-dot hi-dot-2" />
+            <span className="hi-dot hi-dot-3" />
+            <span className="hi-dot hi-dot-4" />
           </div>
         </div>
 
@@ -73,5 +85,3 @@ function Hero() {
     </section>
   );
 }
-
-export default Hero;

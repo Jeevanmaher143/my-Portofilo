@@ -1,146 +1,770 @@
-/* ========================================
-   PROJECTS SECTION - OPTIMIZED VERSION
-   ======================================== */
+/* =============================================
+   PROJECTS — MANUAL TESTING THEME
+   Enhanced UI with Graphics & Animation
+============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --primary: #fbbf24;
+  --secondary: #f59e0b;
+  --accent: #3B82F6;
+
+  --bg-dark: #0f172a;
+}
+
+/* =============================================
+   MAIN SECTION
+============================================= */
 
 .projects-section {
   position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  font-family: var(--font-body);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #111827 0%,
+      #0f172a 40%,
+      #020617 100%
+    );
+
+  isolation: isolate;
 }
 
-/* ========== HEADER STYLES ========== */
+/* =============================================
+   ANIMATED GRID BACKGROUND
+============================================= */
+
+.projects-section::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(251,191,36,0.04) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(251,191,36,0.04) 1px,
+      transparent 1px
+    );
+
+  background-size: 52px 52px;
+
+  mask-image:
+    radial-gradient(
+      ellipse 80% 80% at 50% 50%,
+      black 40%,
+      transparent 100%
+    );
+
+  animation:
+    gridShift 20s linear infinite;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+@keyframes gridShift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 52px 52px;
+  }
+}
+
+/* =============================================
+   GLOW ORBS
+============================================= */
+
+.bg-orb {
+  display: block;
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.bg-orb-1 {
+  width: 560px;
+  height: 560px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(251,191,36,0.18) 0%,
+      rgba(251,191,36,0.06) 50%,
+      transparent 70%
+    );
+
+  top: -120px;
+  left: -140px;
+
+  filter: blur(60px);
+
+  animation:
+    orbFloat1 12s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+  width: 480px;
+  height: 480px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59,130,246,0.14) 0%,
+      rgba(59,130,246,0.05) 50%,
+      transparent 70%
+    );
+
+  top: 40%;
+  right: -100px;
+
+  filter: blur(70px);
+
+  animation:
+    orbFloat2 15s ease-in-out infinite;
+}
+
+.bg-orb-3 {
+  width: 400px;
+  height: 400px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(245,158,11,0.12) 0%,
+      rgba(245,158,11,0.04) 50%,
+      transparent 70%
+    );
+
+  bottom: 5%;
+  left: 15%;
+
+  filter: blur(65px);
+
+  animation:
+    orbFloat3 18s ease-in-out infinite;
+}
+
+.bg-orb-4 {
+  width: 300px;
+  height: 300px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(251,191,36,0.08) 0%,
+      transparent 70%
+    );
+
+  top: 60%;
+  left: 60%;
+
+  filter: blur(55px);
+
+  animation:
+    orbFloat1 22s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat1 {
+  0%,100% {
+    transform:
+      translate(0,0)
+      scale(1);
+  }
+
+  33% {
+    transform:
+      translate(24px,-36px)
+      scale(1.07);
+  }
+
+  66% {
+    transform:
+      translate(-18px,18px)
+      scale(0.95);
+  }
+}
+
+@keyframes orbFloat2 {
+  0%,100% {
+    transform:
+      translate(0,0)
+      scale(1);
+  }
+
+  40% {
+    transform:
+      translate(-28px,22px)
+      scale(1.05);
+  }
+
+  70% {
+    transform:
+      translate(16px,-14px)
+      scale(0.97);
+  }
+}
+
+@keyframes orbFloat3 {
+  0%,100% {
+    transform:
+      translate(0,0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate(20px,-26px)
+      scale(1.08);
+  }
+}
+
+/* =============================================
+   HEADER
+============================================= */
+
 .projects-header {
+  text-align: center;
+
+  margin-bottom: 5rem;
+
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+
+  animation:
+    fadeInDown 0.8s cubic-bezier(0.22,1,0.36,1)
+    0.15s forwards;
 }
 
-.projects-tag {
-  color: #fbbf24;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+/* =============================================
+   BADGE
+============================================= */
+
+.projects-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 6px 16px;
+
+  border-radius: 100px;
+
+  background:
+    rgba(251,191,36,0.1);
+
+  border:
+    1px solid rgba(251,191,36,0.25);
+
+  margin-bottom: 16px;
+
+  backdrop-filter: blur(8px);
 }
+
+.projects-badge-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  animation:
+    pulseDot 2s ease-in-out infinite;
+
+  box-shadow:
+    0 0 8px rgba(251,191,36,0.8);
+}
+
+@keyframes pulseDot {
+  0%,100% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+
+    opacity: 0.7;
+  }
+}
+
+/* =============================================
+   TITLE
+============================================= */
 
 .projects-title {
-  font-weight: 800;
-  color: #ffffff;
+  font-family:
+    var(--font-display) !important;
+
+  font-weight: 800 !important;
+
+  letter-spacing: -0.04em;
+
+  font-size:
+    clamp(2.5rem,6vw,4.5rem);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #e2e8f0 40%,
+      #94a3b8 100%
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
 }
+
+.projects-title-highlight {
+  background:
+    linear-gradient(
+      135deg,
+      #fbbf24,
+      #3B82F6,
+      #f59e0b
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% 200%;
+
+  animation:
+    gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =============================================
+   SUBTITLE
+============================================= */
 
 .projects-subtitle {
+  opacity: 0;
+
+  animation:
+    fadeInUp 0.7s ease 0.35s both;
+
   color: #cbd5e1;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease 0.2s backwards;
+
+  max-width: 680px;
+
+  margin: auto;
+
+  line-height: 1.8;
+
+  font-size: 1rem;
 }
 
-/* ========== PROJECT GRID ANIMATION ========== */
-.project-grid-item {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease forwards;
+/* =============================================
+   GRID
+============================================= */
+
+.projects-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 28px;
 }
 
-.project-grid-item:nth-child(1) { animation-delay: 0.1s; }
-.project-grid-item:nth-child(2) { animation-delay: 0.2s; }
-.project-grid-item:nth-child(3) { animation-delay: 0.3s; }
-.project-grid-item:nth-child(4) { animation-delay: 0.4s; }
-.project-grid-item:nth-child(5) { animation-delay: 0.5s; }
-.project-grid-item:nth-child(6) { animation-delay: 0.6s; }
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-/* ========== PROJECT CARD ========== */
+/* =============================================
+   CARD
+============================================= */
+
 .project-card {
   position: relative;
+
   overflow: hidden;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,23,42,0.88),
+      rgba(30,41,59,0.78)
+    );
+
+  backdrop-filter: blur(18px);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+transition: all 0.28s ease;
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25);
 }
 
-/* ========== PROJECT ICON ========== */
-.project-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
+/* =============================================
+   CARD HOVER
+============================================= */
+
+.d:hover {
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(251,191,36,0.16);
+
+  box-shadow:
+    0 12px 30px rgba(251,191,36,0.10);
 }
 
-.project-icon {
-  transition: transform 0.3s ease;
+/* =============================================
+   SHIMMER
+============================================= */
+
+.project-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,23,42,0.88),
+      rgba(30,41,59,0.78)
+    );
+
+  backdrop-filter: blur(18px);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.18);
 }
 
-/* ========== PROJECT TAG ========== */
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* =============================================
+   ICON AREA
+============================================= */
+
+.project-carproj-icon-wrap {
+  position: relative;
+
+  transition: background 0.4s ease;
+}
+
+.proj-icon {
+  transition:
+    transform 0.4s cubic-bezier(
+      0.175,
+      0.885,
+      0.32,
+      1.275
+    );
+}
+
+.project-card:hover::after {
+  opacity: 0;
+}
+
+/* =============================================
+   TITLE
+============================================= */
+
+.proj-title {
+  transition: color 0.3s ease;
+
+  font-family:
+    var(--font-display) !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: -0.02em;
+
+  color: #f8fafc;
+}
+
+/* =============================================
+   TAGS
+============================================= */
+
 .project-tag {
   transition: all 0.3s ease;
 }
 
-/* ========== PROJECT BUTTONS ========== */
+.project-tag:hover {
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   BUTTONS
+============================================= */
+
 .project-btn,
 .project-btn-outline {
   transition: all 0.3s ease;
 }
 
-/* ========================================
-   KEYFRAME ANIMATIONS (MINIMAL)
-   ======================================== */
+.project-btn:hover,
+.project-btn-outline:hover {
+  transform: translateY(-3px);
+}
+
+/* =============================================
+   DIVIDER
+============================================= */
+
+.section-divider {
+  width: 80px;
+
+  height: 2px;
+
+  margin: 20px auto 0;
+
+  border-radius: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #fbbf24,
+      #3B82F6,
+      transparent
+    );
+
+  animation:
+    dividerGlow 3s ease-in-out infinite;
+}
+
+@keyframes dividerGlow {
+  0%,100% {
+    opacity: 0.6;
+
+    width: 60px;
+  }
+
+  50% {
+    opacity: 1;
+
+    width: 100px;
+  }
+}
+
+/* =============================================
+   CARD NUMBER
+============================================= */
+
+.card-number {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.06em;
+
+  color:
+    rgba(255,255,255,0.12);
+
+  z-index: 2;
+}
+
+/* =============================================
+   CORNER
+============================================= */
+
+.card-corner {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 20px;
+  height: 20px;
+
+  opacity: 0.4;
+}
+
+.card-corner::before,
+.card-corner::after {
+  content: '';
+
+  position: absolute;
+
+  background: var(--primary);
+}
+
+.card-corner::before {
+  top: 0;
+  right: 0;
+
+  width: 2px;
+  height: 12px;
+}
+
+.card-corner::after {
+  top: 0;
+  right: 0;
+
+  width: 12px;
+  height: 2px;
+}
+
+/* =============================================
+   BOTTOM LINE
+============================================= */
+
+.projects-bottom-decoration {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(251,191,36,0.3) 25%,
+      rgba(59,130,246,0.4) 50%,
+      rgba(245,158,11,0.3) 75%,
+      transparent 100%
+    );
+}
+
+/* =============================================
+   ANIMATIONS
+============================================= */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-28px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+
+    transform:
+      translateY(24px);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-
-@media (max-width: 900px) {
-  .projects-title {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .projects-header {
-    margin-bottom: 2rem;
-  }
-  
-  .project-card {
-    border-radius: 16px;
-  }
-}
-
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
+/* =============================================
+   REDUCED MOTION
+============================================= */
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
   }
 }
 
-/* Focus styles for accessibility */
-.project-btn:focus,
-.project-btn-outline:focus {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
-}
-
-/* ========================================
-   PRINT STYLES
-   ======================================== */
+/* =============================================
+   PRINT
+============================================= */
 
 @media print {
-  .project-card {
-    border: 1px solid #000;
-    box-shadow: none;
-    break-inside: avoid;
-  }
-  
-  .project-btn,
-  .project-btn-outline {
+  .bg-orb {
     display: none;
   }
+
+  .project-card {
+    border:
+      1px solid #000 !important;
+
+    break-inside: avoid;
+  }
+}
+
+/* =============================================
+   GLOBAL TEXT
+============================================= */
+
+.project-card p,
+.project-card span,
+.project-card button,
+.projects-subtitle {
+  font-family:
+    var(--font-body) !important;
 }

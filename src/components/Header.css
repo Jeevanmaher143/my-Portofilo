@@ -6,6 +6,39 @@
   position: relative;
 }
 
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(251, 191, 36, 0.08), transparent 30%),
+    radial-gradient(circle at 88% 50%, rgba(59, 130, 246, 0.08), transparent 28%);
+}
+
+.site-header.automation-header::before {
+  background:
+    radial-gradient(circle at 14% 50%, rgba(103, 232, 249, 0.12), transparent 30%),
+    radial-gradient(circle at 88% 50%, rgba(52, 211, 153, 0.1), transparent 28%);
+}
+
+.robotic-logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.robotic-logo::after {
+  content: "";
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  height: 2px;
+  top: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.65);
+  animation: roboticScan 2.2s ease-in-out infinite;
+}
+
 /* ========== ENTRANCE ANIMATIONS ========== */
 
 .header-brand-container {
@@ -112,6 +145,21 @@
   }
 }
 
+@keyframes roboticScan {
+  0%, 100% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+
+  18%, 82% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(24px);
+  }
+}
+
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */
@@ -121,6 +169,36 @@
     padding-left: 1.2rem !important;
     padding-right: 1.2rem !important;
     font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .header-brand-container {
+    flex: 0 1 auto;
+  }
+
+  .header-nav-container {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header .MuiToolbar-root {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .header-brand-container {
+    justify-content: center;
+  }
+
+  .header-nav-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-nav-container .MuiButton-root {
+    flex: 1;
   }
 }
 
@@ -181,5 +259,88 @@
   .header-appbar,
   .mobile-drawer {
     display: none !important;
+  }
+}
+/* ====================================
+   PREMIUM NAVBAR EFFECTS
+==================================== */
+
+.dropdown-menu {
+  animation: floatingGlow 4s ease-in-out infinite;
+}
+
+@keyframes floatingGlow {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* GOLDEN LIGHT */
+
+.MuiAppBar-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at left,
+      rgba(251,191,36,0.08),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at right,
+      rgba(168,85,247,0.08),
+      transparent 35%
+    );
+
+  pointer-events: none;
+}
+
+/* BUTTON SHINE */
+
+.MuiButton-root {
+  overflow: hidden;
+}
+
+.MuiButton-root::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+
+  transition: 0.6s;
+}
+
+.MuiButton-root:hover::before {
+  left: 120%;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .dropdown-menu {
+    display: none;
   }
 }

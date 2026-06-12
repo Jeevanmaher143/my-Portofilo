@@ -1,0 +1,374 @@
+.automation-projects-section {
+  position: relative;
+  overflow: hidden;
+  min-height: auto;
+  padding: 62px 20px 76px;
+  scroll-margin-top: 74px;
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(6, 182, 212, 0.16), transparent 30%),
+    radial-gradient(circle at 78% 22%, rgba(168, 85, 247, 0.14), transparent 30%),
+    linear-gradient(180deg, #020617 0%, #06101d 46%, #030712 100%);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.automation-projects-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(103, 232, 249, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 50% 45%, black 0%, transparent 78%);
+  animation: automationProjectGrid 20s linear infinite;
+  pointer-events: none;
+}
+
+.automation-projects-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(6, 182, 212, 0.06) 48%, transparent 52%),
+    radial-gradient(circle at 50% 100%, rgba(251, 191, 36, 0.12), transparent 35%);
+  pointer-events: none;
+}
+
+.automation-projects-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.automation-projects-header {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.automation-projects-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(103, 232, 249, 0.08);
+  border: 1px solid rgba(103, 232, 249, 0.24);
+  color: #67e8f9;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.automation-projects-header h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.automation-projects-header h2 span {
+  background: linear-gradient(135deg, #67e8f9, #818cf8, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.automation-projects-header p {
+  color: #94a3b8;
+  line-height: 1.75;
+  margin: 16px auto 0;
+  font-size: 1rem;
+}
+
+.automation-project-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 660px;
+  margin: 30px auto 0;
+}
+
+.automation-project-stats > div {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(16px);
+}
+
+.automation-project-stats strong {
+  display: block;
+  color: #fff;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.automation-project-stats span {
+  display: block;
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.automation-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.automation-project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.82), rgba(2, 6, 23, 0.86));
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.32);
+  opacity: 0;
+  animation: automationProjectIn 0.7s ease forwards;
+  transition: transform 0.34s ease, border-color 0.34s ease, box-shadow 0.34s ease;
+}
+
+.automation-project-card:hover {
+  transform: translateY(-10px);
+  border-color: color-mix(in srgb, var(--project-color) 48%, transparent);
+  box-shadow:
+    0 34px 70px rgba(0, 0, 0, 0.42),
+    0 0 58px color-mix(in srgb, var(--project-color) 18%, transparent);
+}
+
+.automation-project-image {
+  position: relative;
+  min-height: 230px;
+  overflow: hidden;
+  background: #020617;
+}
+
+.automation-project-image img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.12) contrast(1.04);
+  transition: transform 0.5s ease;
+}
+
+.automation-project-card:hover .automation-project-image img {
+  transform: scale(1.06);
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.08), rgba(2, 6, 23, 0.86)),
+    radial-gradient(circle at 50% 30%, transparent, rgba(2, 6, 23, 0.3));
+}
+
+.project-eye-chip {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #f8fafc;
+  background: rgba(2, 6, 23, 0.68);
+  border: 1px solid color-mix(in srgb, var(--project-color) 36%, transparent);
+  backdrop-filter: blur(14px);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.project-eye-chip svg {
+  color: var(--project-color);
+}
+
+.automation-project-body {
+  padding: 22px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.automation-project-title-row {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 13px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.automation-project-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--project-color);
+  background: color-mix(in srgb, var(--project-color) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--project-color) 25%, transparent);
+}
+
+.automation-project-number {
+  display: block;
+  color: var(--project-color);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  margin-bottom: 4px;
+}
+
+.automation-project-card h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+.automation-project-card p {
+  margin: 0 0 18px;
+  color: #94a3b8;
+  line-height: 1.72;
+  font-size: 0.9rem;
+}
+
+.automation-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.automation-project-tags span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--project-color) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--project-color) 22%, transparent);
+  color: color-mix(in srgb, var(--project-color) 86%, white);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.automation-project-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: auto;
+}
+
+.automation-project-metrics div {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  border-radius: 12px;
+  color: #dbeafe;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.automation-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.automation-project-actions a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 13px;
+  border-radius: 11px;
+  color: #f8fafc;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 900;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.automation-project-actions a:hover {
+  transform: translateY(-3px);
+  color: var(--project-color);
+  border-color: color-mix(in srgb, var(--project-color) 44%, transparent);
+}
+
+@keyframes automationProjectGrid {
+  from { transform: translateY(0); }
+  to { transform: translateY(56px); }
+}
+
+@keyframes automationProjectIn {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 920px) {
+  .automation-project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .automation-projects-section {
+    padding: 48px 14px 58px;
+  }
+
+  .automation-project-stats,
+  .automation-project-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .automation-project-image,
+  .automation-project-image img {
+    min-height: 210px;
+    height: 210px;
+  }
+
+  .automation-project-body {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .automation-projects-section::before,
+  .automation-project-card,
+  .automation-project-image img {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .automation-project-card {
+    opacity: 1;
+  }
+}
