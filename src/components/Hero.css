@@ -1,6 +1,6 @@
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+  background: linear-gradient(160deg, #020617 0%, #0e2138 55%, #020617 100%);
   display: flex;
   align-items: center;
   padding: 2rem 1rem;
@@ -254,13 +254,15 @@
 /* ========== MULTIPLE ORBITING RINGS ========== */
 .orbit-ring {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  /* sized relative to .image-wrapper so rings scale on every screen */
+  width: 120%;
+  height: 120%;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  will-change: transform;
 }
 
 /* Ring 1 */
@@ -274,8 +276,8 @@
 
 /* Ring 2 */
 .ring-2 {
-  width: 380px;
-  height: 380px;
+  width: 108%;
+  height: 108%;
   border: 3px solid transparent;
   border-bottom: 3px solid #3b82f6;
   border-left: 3px solid #60a5fa;
@@ -285,8 +287,8 @@
 
 /* Ring 3 */
 .ring-3 {
-  width: 450px;
-  height: 450px;
+  width: 132%;
+  height: 132%;
   border: 2px solid transparent;
   border-top: 2px solid #a855f7;
   border-bottom: 2px solid #c084fc;
@@ -298,28 +300,30 @@
 /* ========== PULSING GLOW EFFECT ========== */
 .glow-pulse {
   position: absolute;
-  inset: -20px;
+  inset: -6%;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(251,191,36,0.3) 0%, rgba(59,130,246,0.3) 100%);
   animation: pulseGlow 3s ease-in-out infinite;
   filter: blur(25px);
   z-index: -1;
+  will-change: transform, opacity;
 }
 
 /* ========== MAIN IMAGE CONTAINER ========== */
 .image-ring {
-  width: 320px;
-  height: 320px;
+  width: 92%;
+  height: 92%;
   border-radius: 50%;
   padding: 6px;
   background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #3b82f6 100%);
-  animation: float 4s ease-in-out infinite;
-  box-shadow: 
-    0 20px 60px rgba(251,191,36,0.4), 
+  animation: float 5s ease-in-out infinite;
+  box-shadow:
+    0 20px 60px rgba(251,191,36,0.4),
     0 0 100px rgba(59,130,246,0.2),
     inset 0 0 50px rgba(255,255,255,0.1);
   position: relative;
   z-index: 1;
+  will-change: transform;
 }
 
 .image-ring img {
@@ -340,6 +344,7 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   z-index: 10;
+  will-change: transform, opacity;
 }
 
 .particle-1 {
@@ -470,8 +475,8 @@
 
 /* Image Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -16px, 0); }
 }
 
 @keyframes orbitRotate {
@@ -562,31 +567,15 @@
     font-size: 0.9rem;
   }
 
-  /* Image adjustments for mobile */
+  /* Image adjustments for mobile — rings & photo scale with the wrapper */
   .image-wrapper {
-    width: 260px;
-    height: 260px;
+    width: 300px;
+    height: 300px;
   }
 
-  .image-ring {
-    width: 220px;
-    height: 220px;
-  }
-
-  .orbit-ring {
-    border-width: 2px;
-  }
-
-  .ring-1 {
-    inset: -25px;
-  }
-
+  .ring-1,
   .ring-2 {
-    inset: -18px;
-  }
-
-  .ring-3 {
-    inset: -32px;
+    border-width: 2px;
   }
 
   .particle {
@@ -628,24 +617,28 @@
   }
 
   .image-wrapper {
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
   }
+}
 
-  .image-ring {
-    width: 180px;
-    height: 180px;
+@media (max-width: 360px) {
+  .image-wrapper {
+    width: 200px;
+    height: 200px;
   }
+}
 
-  .ring-1 {
-    inset: -20px;
-  }
-
-  .ring-2 {
-    inset: -15px;
-  }
-
-  .ring-3 {
-    inset: -25px;
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring,
+  .image-ring,
+  .glow-pulse,
+  .particle,
+  .bg-orb,
+  .float-shape,
+  .hero-title span,
+  .hero-tag {
+    animation: none !important;
   }
 }

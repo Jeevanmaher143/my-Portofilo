@@ -670,7 +670,8 @@
   }
   .automation-desc, .hero-stats { margin-left: auto; margin-right: auto; }
   .automation-buttons, .tech-badges { justify-content: center; }
-  .ah-image-side { margin: 0 auto; }
+  /* show profile photo first when stacked, matching the manual hero */
+  .ah-image-side { margin: 0 auto; order: -1; }
 }
 
 @media (max-width: 640px) {

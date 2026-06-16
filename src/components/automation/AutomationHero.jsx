@@ -2,15 +2,11 @@ import React from "react";
 import {
   ArrowRight,
   Bot,
-  Brain,
   Cpu,
-  GitBranch,
-  ShieldCheck,
   Sparkles,
   Terminal,
   Workflow,
   Activity,
-  Zap,
   CheckCircle2,
   Download,
 } from "lucide-react";
@@ -20,13 +16,6 @@ const heroStats = [
   { value: "AI", label: "Test Design", color: "#67e8f9" },
   { value: "24/7", label: "CI Runs",   color: "#c084fc" },
   { value: "0.8s", label: "Bug Signals", color: "#34d399" },
-];
-
-const hudSignals = [
-  { icon: Brain,       label: "AI test planning",    tone: "cyan"   },
-  { icon: Bot,         label: "Self-healing scripts", tone: "violet" },
-  { icon: ShieldCheck, label: "Quality gate checks",  tone: "green"  },
-  { icon: GitBranch,   label: "CI/CD release guard",  tone: "amber"  },
 ];
 
 const techBadges = [
@@ -173,17 +162,6 @@ export default function AutomationHero() {
             {/* data stream dots on ring-1 */}
             <div className="ah-data-dot ah-dd1" />
             <div className="ah-data-dot ah-dd2" />
-          </div>
-
-          {/* ── activity panel below image ── */}
-          <div className="automation-activity-panel">
-            {hudSignals.map(({ icon: Icon, label, tone }) => (
-              <div className={`activity-row ${tone}`} key={label}>
-                <Icon size={17} />
-                <span>{label}</span>
-                <Zap size={12} className="activity-zap" />
-              </div>
-            ))}
           </div>
         </div>
 

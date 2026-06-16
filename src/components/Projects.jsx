@@ -139,8 +139,9 @@ function Projects() {
       id="projects"
       className="projects-section"
       sx={{
-        py: { xs: 7, md: 11 },
-        background: "linear-gradient(180deg, #060b18 0%, #0a1220 40%, #0f172a 70%, #1a2235 100%)",
+        pt: { xs: 1, md: 1.5 },
+        pb: { xs: 7, md: 11 },
+        background: "linear-gradient(180deg, #020617 0%, #0d1b2e 50%, #020617 100%)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -166,7 +167,7 @@ function Projects() {
             sx={{
               fontWeight: 800,
               mb: 2,
-              mt: 1,
+              mt: 0,
               fontSize: { xs: "2rem", sm: "2.6rem", md: "3.2rem" },
               fontFamily: "var(--font-display) !important",
             }}

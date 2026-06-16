@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Container,
@@ -14,7 +14,6 @@ import {
   Bot,
   Brain,
   BriefcaseBusiness,
-  CheckCircle2,
   Github,
   Heart,
   Instagram,
@@ -22,7 +21,6 @@ import {
   Mail,
   MapPin,
   ShieldCheck,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
@@ -161,6 +159,29 @@ function Footer({ activeTab }) {
   const footerTheme = footerThemes[footerMode];
   const quickLinks = quickLinkSets[footerMode];
 
+  const footerRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -171,7 +192,8 @@ function Footer({ activeTab }) {
   return (
     <Box
       component="footer"
-      className={`footer-section ${footerTheme.className}`}
+      ref={footerRef}
+      className={`footer-section ${footerTheme.className}${visible ? " footer-visible" : ""}`}
       sx={{
         "--footer-accent": footerTheme.accent,
         "--footer-accent-soft": footerTheme.accentSoft,
@@ -183,54 +205,9 @@ function Footer({ activeTab }) {
       <div className="footer-top-line"></div>
 
       <Container maxWidth="lg" className="footer-shell">
-        <Box className="footer-theme-band">
-          <Box className="footer-theme-copy-block">
-            <div className="footer-theme-pill">
-              <Sparkles size={15} />
-              {footerTheme.kicker}
-            </div>
-
-            <Typography component="h2" className="footer-theme-title">
-              {footerTheme.title}
-              <span>{footerTheme.highlight}</span>
-            </Typography>
-
-            <Typography className="footer-theme-copy">
-              {footerTheme.description}
-            </Typography>
-          </Box>
-
-          <Box className="footer-status-card">
-            <span>{footerTheme.statusLabel}</span>
-            <strong>{footerTheme.statusValue}</strong>
-            <div>
-              <CheckCircle2 size={16} />
-              {footerTheme.statusText}
-            </div>
-          </Box>
-        </Box>
-
-        <Box className="footer-highlight-grid">
-          {footerTheme.highlights.map((item) => {
-            const HighlightIcon = item.icon;
-
-            return (
-              <article className="footer-highlight-card" key={item.label}>
-                <div className="footer-highlight-icon">
-                  <HighlightIcon size={20} />
-                </div>
-                <div>
-                  <strong>{item.label}</strong>
-                  <span>{item.value}</span>
-                </div>
-              </article>
-            );
-          })}
-        </Box>
-
         <Box className="footer-main">
           <Grid container spacing={3.5}>
-            <Grid item xs={12} md={4}>
+            <Grid size={{ xs: 12, md: 4 }}>
               <Typography component="h3" className="footer-brand">
                 Jeevan Maher
               </Typography>
@@ -262,7 +239,7 @@ function Footer({ activeTab }) {
               </Box>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
               <Typography component="h3" className="footer-col-title">
                 Quick Links
               </Typography>
@@ -277,7 +254,7 @@ function Footer({ activeTab }) {
               </nav>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
               <Typography component="h3" className="footer-col-title">
                 Get In Touch
               </Typography>

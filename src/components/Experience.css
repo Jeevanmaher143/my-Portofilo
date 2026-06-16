@@ -26,15 +26,13 @@
 .exp-section {
   position: relative;
 
-  padding: 90px 20px;
+  padding: 90px 20px 36px;
 
   overflow: hidden;
 
   background:
-    radial-gradient(circle at top left,
-      #111827 0%,
-      #0f172a 40%,
-      #020617 100%);
+    radial-gradient(circle at top left, rgba(17, 24, 39, 0.6), transparent 60%),
+    linear-gradient(180deg, #020617 0%, #0d1b2e 50%, #020617 100%);
 
   color: var(--text-light);
 
@@ -520,7 +518,7 @@
 
 @media (max-width: 768px) {
   .exp-section {
-    padding: 70px 16px;
+    padding: 70px 16px 28px;
   }
 
   .exp-header {

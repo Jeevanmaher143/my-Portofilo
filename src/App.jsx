@@ -26,25 +26,25 @@ function App() {
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <CustomCursor activeTab={activeTab} />
 
-      <main>
+      <main style={{ paddingTop: 64 }}>
         {activeTab === "manual" && (
           <>
-            <Hero />
-            <Skills />
-            <Experience />
-            <Projects />
-            <About />
-            <Contact />
+            <div id="home">       <Hero />       </div>
+            <div id="skills">     <Skills />     </div>
+            <div id="experience"> <Experience /> </div>
+            <div id="projects">   <Projects />   </div>
+            <div id="about">      <About />      </div>
+            <div id="contact">    <Contact />    </div>
           </>
         )}
 
         {activeTab === "automation" && (
           <>
-            <AutomationHero />
-            <AutomationSkills />
-            <AutomationExperience />
-            <AutomationProjects />
-            <Contact variant="automation" />
+            <div id="home">       <AutomationHero />       </div>
+            <div id="skills">     <AutomationSkills />     </div>
+            <div id="experience"> <AutomationExperience /> </div>
+            <div id="projects">   <AutomationProjects />   </div>
+            <div id="contact">    <Contact variant="automation" /> </div>
           </>
         )}
       </main>
