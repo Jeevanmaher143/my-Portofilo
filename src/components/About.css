@@ -1,328 +1,513 @@
 /* ========================================
-   ABOUT SECTION - ADVANCED ANIMATIONS
-   ======================================== */
+   ABOUT SECTION — PREMIUM MANUAL TESTING UI
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary: #fbbf24;
+  --secondary: #f59e0b;
+  --accent: #3b82f6;
+
+  --bg-dark: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.72);
+
+  --text-light: #f8fafc;
+  --text-muted: #cbd5e1;
+
+  --border: rgba(255,255,255,0.08);
+}
+
+/* ========================================
+   MAIN SECTION
+======================================== */
 
 .about-section {
   position: relative;
+
+  overflow: hidden;
+
+  font-family: 'Inter', sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #111827 0%,
+      #0f172a 45%,
+      #020617 100%
+    );
+
+  isolation: isolate;
 }
 
-/* ========== ANIMATED BACKGROUND ELEMENTS ========== */
+/* ========================================
+   GRID BACKGROUND
+======================================== */
+
+.about-section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(251,191,36,0.03) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(251,191,36,0.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+
+  opacity: 0.35;
+
+  pointer-events: none;
+
+  animation:
+    gridMove 20s linear infinite;
+}
+
+/* ========================================
+   ORBS
+======================================== */
+
 .about-bg-orb {
   position: absolute;
+
   border-radius: 50%;
+
   pointer-events: none;
+
   filter: blur(90px);
-  opacity: 0.15;
+
+  opacity: 0.10;
+
   z-index: 0;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
 }
 
 .about-bg-orb.orb-1 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(251, 191, 36, 0.4) 0%,
-    transparent 70%
-  );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(251,191,36,0.35) 0%,
+      transparent 70%
+    );
+
   top: 5%;
   right: -15%;
-  animation: floatOrbGentle 28s;
+
+  animation:
+    floatOrb 26s ease-in-out infinite;
 }
 
 .about-bg-orb.orb-2 {
   width: 450px;
   height: 450px;
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.4) 0%,
-    transparent 70%
-  );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59,130,246,0.30) 0%,
+      transparent 70%
+    );
+
   bottom: 10%;
   left: -15%;
-  animation: floatOrbGentle 25s reverse;
+
+  animation:
+    floatOrb 24s ease-in-out infinite reverse;
 }
 
-/* ========== FLOATING GEOMETRIC SHAPES ========== */
+/* ========================================
+   SHAPES
+======================================== */
+
 .about-bg-shape {
   position: absolute;
-  border: 2px solid rgba(102, 126, 234, 0.2);
+
+  border:
+    1px solid rgba(251,191,36,0.12);
+
   pointer-events: none;
+
   z-index: 0;
 }
 
 .about-bg-shape.shape-1 {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
+  width: 90px;
+  height: 90px;
+
+  border-radius: 18px;
+
   top: 15%;
   right: 12%;
-  border-color: rgba(251, 191, 36, 0.3);
+
   transform: rotate(45deg);
-  animation: rotateFloatGentle 18s linear infinite;
+
+  animation:
+    rotateFloat 18s linear infinite;
 }
 
 .about-bg-shape.shape-2 {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
+
   border-radius: 50%;
+
   bottom: 20%;
   left: 10%;
-  border-color: rgba(16, 185, 129, 0.3);
-  animation: pulseScaleGentle 5s ease-in-out infinite;
+
+  border-color:
+    rgba(59,130,246,0.18);
+
+  animation:
+    pulseShape 6s ease-in-out infinite;
 }
 
 .about-bg-shape.shape-3 {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
+
   top: 45%;
   right: 8%;
-  border-color: rgba(236, 72, 153, 0.3);
-  transform: rotate(30deg);
-  animation: rotateFloatGentle 14s linear infinite reverse;
-}
 
-/* ========== HEADER ANIMATIONS ========== */
-.about-header {
-  animation: fadeInDown 0.8s ease forwards;
-}
+  border-color:
+    rgba(245,158,11,0.18);
 
-.about-tag {
-  animation: glowPulseSubtle 3s ease-in-out infinite;
-  display: inline-block;
-}
+  transform: rotate(25deg);
 
-.about-title {
-  animation: gradientShiftSlow 5s ease infinite;
-}
-
-.section-subtitle {
-  animation: fadeInUp 0.8s ease 0.2s backwards;
-  position: relative;
-  display: inline-block;
-}
-
-.section-subtitle::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #fbbf24, #3b82f6);
-  border-radius: 10px;
-  animation: expandLine 0.8s ease 0.4s backwards;
-}
-
-/* ========== HIGHLIGHT CARDS ANIMATIONS ========== */
-.highlight-grid-item {
-  animation: fadeInScale 0.6s ease forwards;
-  opacity: 0;
-}
-
-.highlight-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-/* Breathing/Living Animation */
-.highlight-card {
-  animation: breathe 4s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-}
-
-/* ========== EDUCATION CARDS ANIMATIONS ========== */
-.education-grid-item {
-  animation: fadeInScale 0.7s ease forwards;
-  opacity: 0;
-}
-
-.education-card {
-  position: relative;
-  cursor: pointer;
-}
-
-/* Floating Animation for Education Cards */
-.education-card {
-  animation: floatCard 5s ease-in-out infinite;
-}
-
-@keyframes floatCard {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Stagger delays for education cards */
-.education-grid-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.education-grid-item:nth-child(2) {
-  animation-delay: 0.25s;
-}
-
-.education-grid-item:nth-child(3) {
-  animation-delay: 0.4s;
+  animation:
+    rotateFloat 14s linear infinite reverse;
 }
 
 /* ========================================
-   KEYFRAME ANIMATIONS
-   ======================================== */
+   HEADER
+======================================== */
 
-/* Background Animations */
-@keyframes floatOrbGentle {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  33% {
-    transform: translate(50px, -50px);
-  }
-  66% {
-    transform: translate(-40px, 40px);
-  }
+.about-header {
+  animation:
+    fadeDown 0.8s ease forwards;
 }
 
-@keyframes rotateFloatGentle {
-  0% {
-    transform: rotate(45deg) translateY(0);
-  }
-  50% {
-    transform: rotate(225deg) translateY(-20px);
-  }
-  100% {
-    transform: rotate(405deg) translateY(0);
-  }
+.about-tag {
+  display: inline-block;
+
+  color: var(--primary);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.18em;
+
+  animation:
+    glowText 3s ease-in-out infinite;
 }
 
-@keyframes pulseScaleGentle {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 0.7;
-  }
+.about-title {
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fbbf24 0%,
+      #f59e0b 45%,
+      #3b82f6 100%
+    );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    gradientMove 5s ease infinite;
 }
 
-/* Header Animations */
-@keyframes fadeInDown {
+.section-subtitle {
+  position: relative;
+
+  display: inline-block;
+
+  color: var(--text-light);
+}
+
+.section-subtitle::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 55px;
+  height: 3px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fbbf24,
+      #3b82f6
+    );
+}
+
+/* ========================================
+   GRID ITEMS
+======================================== */
+
+.highlight-grid-item,
+.education-grid-item {
+  opacity: 0;
+
+  animation:
+    fadeUp 0.7s ease forwards;
+}
+
+/* ========================================
+   CARDS
+======================================== */
+
+.highlight-card,
+.education-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 22px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,23,42,0.88),
+      rgba(30,41,59,0.74)
+    ) !important;
+
+  backdrop-filter: blur(18px);
+
+  border:
+    1px solid rgba(251,191,36,0.12) !important;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.18);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* ========================================
+   LIGHT HOVER
+======================================== */
+
+.highlight-card:hover,
+.education-card:hover {
+  border-color:
+    rgba(251,191,36,0.22) !important;
+
+  box-shadow:
+    0 10px 26px rgba(251,191,36,0.12);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,23,42,0.92),
+      rgba(30,41,59,0.78)
+    ) !important;
+}
+
+/* ========================================
+   CARD SHIMMER
+======================================== */
+
+.highlight-card::before,
+.education-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255,255,255,0.03) 50%,
+      transparent 65%
+    );
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+}
+
+.highlight-card:hover::before,
+.education-card:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   ICONS
+======================================== */
+
+.highlight-icon,
+.edu-icon {
+  transition:
+    color 0.3s ease;
+}
+
+.highlight-card:hover .highlight-icon,
+.education-card:hover .edu-icon {
+  color: var(--primary);
+}
+
+/* ========================================
+   DOTS
+======================================== */
+
+.highlight-dot,
+.edu-pulse {
+  opacity: 0.6;
+}
+
+/* ========================================
+   EDUCATION CHIP
+======================================== */
+
+.MuiChip-root {
+  backdrop-filter: blur(10px);
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes fadeDown {
   from {
     opacity: 0;
-    transform: translateY(-30px);
+
+    transform:
+      translateY(-28px);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+
+    transform:
+      translateY(24px);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
-@keyframes glowPulseSubtle {
-  0%, 100% {
-    text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+@keyframes glowText {
+  0%,100% {
+    text-shadow:
+      0 0 10px rgba(251,191,36,0.4);
   }
+
   50% {
-    text-shadow: 0 0 25px rgba(251, 191, 36, 0.8),
-                 0 0 35px rgba(251, 191, 36, 0.5);
+    text-shadow:
+      0 0 18px rgba(251,191,36,0.6);
   }
 }
 
-@keyframes gradientShiftSlow {
-  0%, 100% {
+@keyframes gradientMove {
+  0%,100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
 }
 
-@keyframes expandLine {
-  from {
-    width: 0;
+@keyframes floatOrb {
+  0%,100% {
+    transform:
+      translate(0,0);
   }
-  to {
-    width: 60px;
+
+  50% {
+    transform:
+      translate(35px,-35px);
   }
 }
 
-/* Card Entrance Animations */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.85) translateY(30px);
+@keyframes rotateFloat {
+  0% {
+    transform:
+      rotate(45deg)
+      translateY(0);
   }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+
+  50% {
+    transform:
+      rotate(225deg)
+      translateY(-12px);
+  }
+
+  100% {
+    transform:
+      rotate(405deg)
+      translateY(0);
   }
 }
 
-/* Icon Animations */
-@keyframes iconBounce {
-  0%, 100% {
+@keyframes pulseShape {
+  0%,100% {
+    transform: scale(1);
+
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.12);
+
+    opacity: 0.7;
+  }
+}
+
+@keyframes gridMove {
+  from {
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-5px);
-  }
-}
 
-/* Shimmer Effect */
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-/* Pulse Ring Effect */
-@keyframes pulseRing {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5);
+  to {
+    transform: translateY(50px);
   }
 }
 
 /* ========================================
-   RESPONSIVE DESIGN - MOBILE OPTIMIZED
-   ======================================== */
+   RESPONSIVE
+======================================== */
 
-/* Tablet View */
 @media (max-width: 960px) {
   .about-bg-orb {
     filter: blur(70px);
@@ -333,17 +518,8 @@
     width: 350px;
     height: 350px;
   }
-
-  .about-bg-shape {
-    transform: scale(0.8);
-  }
-
-  .section-subtitle::after {
-    width: 50px;
-  }
 }
 
-/* Mobile View */
 @media (max-width: 600px) {
   .about-section {
     padding-top: 3rem !important;
@@ -353,197 +529,77 @@
   .about-bg-orb {
     width: 250px !important;
     height: 250px !important;
+
     filter: blur(50px);
-    opacity: 0.1;
-  }
-
-  .about-bg-orb.orb-1 {
-    top: 0;
-    right: -20%;
-  }
-
-  .about-bg-orb.orb-2 {
-    bottom: 0;
-    left: -20%;
   }
 
   .about-bg-shape {
     display: none;
   }
 
-  .about-header {
-    margin-bottom: 2rem !important;
-  }
-
-  .about-tag {
-    font-size: 0.75rem !important;
-  }
-
   .about-title {
-    font-size: 1.75rem !important;
+    font-size: 1.9rem !important;
   }
 
   .section-subtitle {
     font-size: 1.2rem !important;
   }
 
-  .section-subtitle::after {
-    width: 40px;
-    bottom: -6px;
-  }
-
   .highlight-card,
   .education-card {
-    max-width: 100% !important;
-  }
-
-  /* Reduce animation intensity on mobile */
-  .highlight-card:hover {
-    transform: translateY(-4px) scale(1.01) !important;
-  }
-
-  .education-card:hover {
-    transform: translateY(-6px) scale(1.02) !important;
-  }
-
-  /* Disable breathing animation on mobile for performance */
-  .highlight-card {
-    animation: none;
-  }
-
-  .education-card {
-    animation: floatCardMobile 6s ease-in-out infinite;
-  }
-
-  @keyframes floatCardMobile {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
+    border-radius: 18px !important;
   }
 }
 
-/* Extra Small Mobile */
 @media (max-width: 400px) {
   .about-title {
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
   }
 
   .section-subtitle {
-    font-size: 1.1rem !important;
-  }
-
-  .highlight-card,
-  .education-card {
-    padding: 1.5rem !important;
-  }
-
-  .highlight-icon svg,
-  .edu-icon svg {
-    width: 20px !important;
-    height: 20px !important;
+    font-size: 1rem !important;
   }
 }
 
 /* ========================================
    ACCESSIBILITY
-   ======================================== */
+======================================== */
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
   }
 
   .about-bg-orb,
   .about-bg-shape {
     animation: none !important;
   }
-
-  .highlight-card,
-  .education-card {
-    animation: none !important;
-  }
-}
-
-/* Focus Visible Styles */
-.highlight-card:focus-visible,
-.education-card:focus-visible {
-  outline: 3px solid #fbbf24;
-  outline-offset: 4px;
 }
 
 /* ========================================
-   PRINT STYLES
-   ======================================== */
+   PRINT
+======================================== */
 
 @media print {
   .about-bg-orb,
-  .about-bg-shape,
-  .highlight-dot,
-  .edu-pulse {
+  .about-bg-shape {
     display: none !important;
   }
 
   .highlight-card,
   .education-card {
-    border: 1px solid #000 !important;
+    border:
+      1px solid #000 !important;
+
     box-shadow: none !important;
-    page-break-inside: avoid;
   }
-
-  .about-section {
-    background: #0f172a !important;
-  }
-}
-
-/* ========================================
-   DARK MODE SUPPORT (if needed)
-   ======================================== */
-
-@media (prefers-color-scheme: dark) {
-  /* Add dark mode styles here if needed */
-  /* Currently the section has light theme by default */
-}
-
-/* ========================================
-   HIGH CONTRAST MODE
-   ======================================== */
-
-@media (prefers-contrast: high) {
-  .highlight-card,
-  .education-card {
-    border-width: 3px !important;
-  }
-
-  .about-tag,
-  .about-title {
-    text-shadow: none !important;
-  }
-}
-
-/* ========================================
-   PERFORMANCE OPTIMIZATIONS
-   ======================================== */
-
-/* GPU Acceleration for smooth animations */
-.highlight-card,
-.education-card,
-.highlight-icon,
-.edu-icon {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Optimize background elements */
-.about-bg-orb,
-.about-bg-shape {
-  will-change: transform, opacity;
 }

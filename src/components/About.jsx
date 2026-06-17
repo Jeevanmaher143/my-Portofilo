@@ -73,7 +73,7 @@ function About() {
       sx={{
         py: { xs: 6, sm: 8, md: 10 },
         px: { xs: 2, sm: 3, md: 5 },
-        background: "linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
+        background: "linear-gradient(180deg, #020617 0%, #11223b 50%, #020617 100%)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -140,11 +140,7 @@ function About() {
           >
             {highlights.map((highlight, index) => (
               <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                lg={2}
+                size={{ xs: 6, sm: 4, md: 4, lg: 2 }}
                 key={index}
                 display="flex"
                 justifyContent="center"
@@ -157,11 +153,12 @@ function About() {
                   elevation={0}
                   className="highlight-card"
                   sx={{
-                    p: { xs: 2.5, sm: 3 },
+                    p: { xs: 2, sm: 3 },
                     textAlign: "center",
                     borderRadius: "16px",
                     border: "2px solid rgba(251, 191, 36, 0.2)",
                     width: "100%",
+                    height: "100%",
                     maxWidth: { xs: 280, sm: 240 },
                     display: "flex",
                     flexDirection: "column",
@@ -277,10 +274,7 @@ function About() {
           >
             {educationData.map((edu, index) => (
               <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
+                size={{ xs: 12, sm: 6, md: 4 }}
                 key={index}
                 display="flex"
                 justifyContent="center"
@@ -298,7 +292,8 @@ function About() {
                     borderRadius: "20px",
                     border: "2px solid rgba(251, 191, 36, 0.2)",
                     width: "100%",
-                    maxWidth: 300,
+                    height: "100%",
+                    maxWidth: 320,
                     position: "relative",
                     overflow: "hidden",
                     transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
